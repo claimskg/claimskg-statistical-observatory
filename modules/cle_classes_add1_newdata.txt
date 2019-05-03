@@ -1,0 +1,32 @@
+development,77: 'agriculture',9; 'population',3; 'transport',12; 'city planning',1; 'marriage',1; 'construction',1; 'jobs',1; 'suicide',1; 'suicide rate',2; 'reading',1; 'sanitary products',1; 'human rights',3; 'food',3; 'hunger',3; 'infrastructure',5; 'sanitation',6; 'housing',12; 'literacy rate',1; 'tourism',4; 'science',7; 'transformation',2; 'research',0; 'freedom of speech',0; 'workers',391; 'ethics',255; 'religion',229; 'public safety',215; 'social security',202; 'polls and public opinion',197; 'families',164; 'diversity',148;.
+history,605: '',;
+statistics,48: 'rate',0; 'ranking',1; 'stats',0;.
+media,27: 'news',0; 'journal',0; 'magazine',0;.
+energy,2: 'electricity',32; 'eskom',1; 'oil',1; 'solar power',0; 'solar panel',0;.
+health,142: 'hiv/aids',34; 'world health organisation',13; 'cancer',10; 'alcohol',9; 'malaria',7; 'drugs',5; 'ebola',5; 'malnutrition',4; 'vaccination',3; 'traditional medicine',3; 'mental health',2; 'zika',2; 'hypertension',1; 'smoking',1; 'tobacco',1; 'tuberculosis',1; 'hiv',1; 'diabetes',1; 'disease',0; 'infection',0; 'contraception',0; 'care',0; 'abortion',0; 'drug',0; 'diarrhea,26',0; 'vaccin',0;.
+women,39: 'sexual violence',14; 'income inequality',13; 'rape',3; 'teen pregnancy',2; 'girls',1; 'sex trade stats',1; 'sex work',1; 'inequality',1; 'femicide',1; 'female genital mutilation',1; 'gender inequality',1; 'gender-based violence',1; 'equality',1; 'abortion',0;.
+reader suggestion,48: 'suggested by reader',2;.
+economy,75: 'employment',33; 'poverty',17; 'income inequality',13; 'unemployment',9; 'debt',6; 'welfare',6; 'business',5; 'budget',5; 'economic freedom fighters',4; 'gdp',2; 'income tax',1; 'tea trade',1; 'civil servant spend',1; 'revenue spend',1; 'inflation',1; 'trade',1; 'wealth',1; 'budget resources',1; 'revenue',1; 'aid',1; 'tax',1; 'jobs',1; 'financ',0; 'economi',0; 'taxes',1487; 'workers',391; 'deficit',275;.
+violence,1: 'sexual violence',14; 'gender-based violence',1; 'abuse',0; 'harassment',0; 'assault',0;.
+crime,44: 'human trafficking',3; 'rape',3; 'genocide',1; 'murder',1; 'slavery',1; 'sexual violence',14; 'gender-based violence',1; 'abuse',0; 'harassment',0; 'assault',0; 'theft',0; 'robbery',0; 'pedophilia',19;.
+law,1: 'prisons',1; 'courts',1; 'justice',1; 'judiciary',1; 'human rights',3; 'legal issues',578; 'supreme court',168; 'civil rights',162;.
+africa,16: 'jacob zuma',40; 'sona',17; 'nigeria',9; 'south african police service',8; 'buhari',2; 'kenya',2; 'south africa',1; 'eskom',1; 'cyril ramaphosa',1; 'zuma',3; 'western cape',3; 'raila odinga',3; 'julius malema',3;.
+education,59: 'children',38; 'teachers',1; 'school',1;.
+children,38: 'sexual violence',14; 'child healthcare',1; 'child mortality rate',1; 'teen suicide',1; 'teachers',1; 'teen pregnancy',2;.
+fact-checking,5: 'fakes',6; 'hoax',3; 'fake news',0; 'fake quotes',26; 'fact check',54;.
+youth,9: 'children',38; 'school',1; 'teen suicide',1; 'teen pregnancy',2; 'child healthcare',1; 'child mortality rate',1;.
+policy,0: 'government',100; 'sona',17; 'election',29; 'elections',1; 'democratic alliance',23; 'corruption',11; 'unemployment',9; 'land reform',7; 'state of the nation',5; 'counties',1; 'literacy rate',1; 'security',4; 'civil servant spend',1; 'democrat',0; 'campaign',0; 'republica',0; 'candidate biography',910;.
+election,29: 'elections',1; 'candidate biography',910; 'voting record',277;.
+security,4: 'police',0: 'fbi',0; 'guns',4; 'weapon',0; 'federal bureau of investigation',0; 'military',459; 'nuclear',105;.
+environment,23: 'water',28; 'pollution',1; 'wildlife',3; 'drought',2; 'sea',0; 'ocean',0; 'carbon',0; 'climate',0; 'fisheries',0; 'fishery',0; 'dolphins',0; 'kyoto protocol',0; 'animals',248;.
+immigration,1086: 'migration',9; 'xenophobia',6; 'refugees',4; 'human rights',3; 'diaspora',1; 'immigrants',1;.
+terrorism,1: 'islamic state',1; 'boko haram',9; '"9/11"',45;.
+middle east,0: 'egypt',0; 'iran',0; 'iraq',1; 'turkey',0; 'saudi arabia',0; 'yemen',0; 'syria',1; 'jordan',0; 'united arab emirates',0; 'israel',0; 'lebanon',0; 'palestine',0; 'oman',0; 'kuwait',0; 'qatar',0; 'bahrain',0;.
+industry,1: 'mining',5; 'informal mining',1; 'aviation',1; 'oil',1; 'eskom',1;.
+data,35: 'open data',1; 'data mining',0; 'internet',1;.
+sex trade stats,1: '',;.
+sex work,1: '';.
+sexual orientation,0: 'homosexual',0; 'bisexual',0; 'transexual',0; 'transsexual',0; 'heterosexual',0; 'asexual',0; 'pansexual',0; 'transgender',0; 'gays and lesbians',155;.
+sex,0: 'sexual abstinence',0; 'sexual stimulation',0; 'sexual intercourse',0; 'contraception',0;.
+internet,1: 'facebook',0; 'twitter',0; 'instagram',0; 'snapchat',0; 'bloggers',0; 'internet rumors',0; 'memes',13; 'viral video',18;.
+sciences,0: 'science',0; 'research',0;
