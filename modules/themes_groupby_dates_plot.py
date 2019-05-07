@@ -59,4 +59,4 @@ def create_scatter_themes_dates():
 
     return scatter_themes_JSON
 
-# print(create_scatter_themes_dates())
+print(create_scatter_themes_dates())
