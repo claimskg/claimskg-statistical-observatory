@@ -34,6 +34,7 @@ df_destack['themes'] = df_destack['themes'].str.split(",")
 #     return sparse_vector
 
 def col_destack(ligne):
+    nl = []
     # if isinstance(col_list, (list,)):
     listeDeTheme = ligne['themes']
     if isinstance(listeDeTheme, (list,)):
@@ -41,9 +42,13 @@ def col_destack(ligne):
         # print(listeDeTheme)
         # ligne['themes']= list(set(listeDeTheme))
         # print(ligne['themes'])
+        # ll = list(set(listeDeTheme))
+        # ll.split(',')
+
             return list(set(listeDeTheme))
         else :
-            return listeDeTheme
+            return list(listeDeTheme)
+            # return listeDeTheme
 # df_destack['set_themes'] = df_destack.apply(lambda row: col_destack(row), axis=1)
 
 
