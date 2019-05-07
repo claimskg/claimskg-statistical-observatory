@@ -284,6 +284,7 @@ print(df_destack_set['themes'])
 
 # df_list_themes = df_destack_set['themes'].dropna().drop_duplicates().values.tolist()
 #
+# def distinct_themes_list():
 df_list_themes = df_destack_set['themes'].dropna().drop_duplicates()
 #
 # # df_list_themes = str(df_destack_set['themes'].dropna().values.tolist())
@@ -308,7 +309,7 @@ for row in df_list_themes:
     # for item in row:
     #     print(item)
         # ThemeRefList.append()
-print(listr)
+# print(listr)
 
 flat_list = [item for sublist in listr for item in sublist]
 # print(flat_list)
@@ -325,9 +326,11 @@ for i in distinctThemeRefList:
 
 distinctThemeRefList3 = list(set(distinctThemeRefList2))
 distinctThemeRefList3.sort()
-print(distinctThemeRefList3)
+    # print(distinctThemeRefList3)
+    # return distinctThemeRefList3
 
-
+# distinctThemeRefList3 = distinct_themes_list()
+# print(distinctThemeRefList3)
 
 
 def col_destack_to_list(ligne):
