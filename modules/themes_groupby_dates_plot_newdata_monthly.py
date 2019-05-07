@@ -5,11 +5,10 @@ import plotly
 import plotly.graph_objs as go
 # from modules import theme_indexer_newdata
 
-def create_scatter_themes_dates_newdata():
+def create_scatter_themes_dates_newdata_monthly():
     #pd.read csv
     df_themes_indexed = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_indexed.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
-    #delete the stupid line 2055
 
     #creation liste de themes distincts
     print(df_themes_indexed['themes'])
@@ -80,7 +79,8 @@ def create_scatter_themes_dates_newdata():
         filtred2 = df['date2'].notnull()
         date = pd.to_datetime('2019')
         filtred3 = df['date2'] <= date
-        dr = df[filtre & filtred2 & filtred3]  # return datafram with only elements matching theme in parameter
+        dr = df[filtre & filtred2 & filtred3] # return datafram with only elements matching theme in parameter
+        # dr = df[filtre & filtred2]  # return datafram with only elements matching theme in parameter
         # dr = df[filtre] #return datafram with only elements matching theme in parameter
         dSmall = dr[["id2","date2",theme]] #select only required columns
         # print(dSmall['date2'])
@@ -91,7 +91,7 @@ def create_scatter_themes_dates_newdata():
 
 
     def buildTrace(dr,theme):
-        df_result = dr.groupby([theme, pd.Grouper(key='date2', freq='Y')])['id2'].size().reset_index(name='counts')
+        df_result = dr.groupby([theme, pd.Grouper(key='date2', freq='M')])['id2'].size().reset_index(name='counts')
         trace = go.Scatter(
             x = df_result['date2'],
             y = df_result['counts'],
@@ -115,8 +115,8 @@ def create_scatter_themes_dates_newdata():
     # #               )
     #
     # # scatter_themes_JSON = json.dumps(data=data, layout=layout, cls=plotly.utils.PlotlyJSONEncoder)
-    scatter_themes_newdata_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    scatter_themes_newdata_monthly_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
     #
-    return scatter_themes_newdata_JSON
+    return scatter_themes_newdata_monthly_JSON
 
-print(create_scatter_themes_dates_newdata())
+print(create_scatter_themes_dates_newdata_monthly())
