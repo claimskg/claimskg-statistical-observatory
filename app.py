@@ -7,11 +7,12 @@ from modules import themes_groupby_dates_plot_newdata_monthly
 from modules import percent_barcharts_ent_kw_author
 from modules import numbers_claimskg_resume
 from modules import fake_news_on_net_scatter
-# from modules import barchartsSourceVeracite
+from modules import barchartsSourceVeracite
 from modules import means_ent_kw_barcharts2_Source
 # from modules import themes_groupby_dates_plot_streamgraph_hot_period
-from modules import themes_groupby_dates_plot_streamgraph_hot_period_monthly
+# from modules import themes_groupby_dates_plot_streamgraph_hot_period_monthly
 from modules import themes_groupby_dates_plot_streamgraph_newdata
+from modules import themes_groupby_dates_plot_streamgraph_newdata_monthly
 
 # from modules import streamchart_themes
 
@@ -43,8 +44,10 @@ def accueil():
     # blank = "
     # bar3 = barchartsSourceVeracite.create_barchart_soureVeracite()
     bar4 = means_ent_kw_barcharts2_Source.create_barchart_nb_means_Source()
+    # bar3k = means_ent_kw_barcharts2_Source.create_barchart_nb_means_Source()
+    barSV = barchartsSourceVeracite.create_barchart_soureVeracite()
     return render_template('index.html', plot1=pie1, plot2=pie2, plot3=bar1, plot4=bar2, plot5=scatter1,
-                           mylist=list_resume, plot7=bar4)
+                           mylist=list_resume, plot7=bar4, plotSV= barSV)
     # return render_template('index.html', plot1=pie1, plot2=pie2, plot3=bar1, plot4=bar2, plot5=scatter1, mylist=list_resume, plot6=bar3, plot7=bar4)
 
 
@@ -112,12 +115,13 @@ def themes():
     #                            "July 2018", "August 2018", "September 2018", "October 2018", "November 2018",
     #                            "December 2018",
     #                            "January 2019", "February 2019", "March 2019", "April 2019"]
-    streamGraphDatasLabelsm = [
+    streamGraphDatasLabelsm = ["March 2005", "June 2005", "September 2005", "December 2005","March 2006", "June 2006", "September 2006", "December 2006","March 2007", "June 2007", "September 2007", "December 2007","March 2008", "June 2008", "September 2008", "December 2008","March 2009", "June 2009", "September 2009", "December 2009","March 2010", "June 2010", "September 2010", "December 2010","March 2011", "June 2011", "September 2011", "December 2011","March 2012", "June 2012", "September 2012", "December 2012","March 2013", "June 2013", "September 2013", "December 2013","March 2014", "June 2014", "September 2014", "December 2014","March 2015", "June 2015", "September 2015", "December 2015",
+                               "March 2016", "June 2016", "September 2016", "December 2016",
         "March 2017", "June 2017",
         "September 2017", "December 2017","March 2018", "June 2018",
         "September 2018", "December 2018",
         "March 2019"]
-    streamGraphDatasm = themes_groupby_dates_plot_streamgraph_hot_period_monthly.getAllSteamGraphData(
+    streamGraphDatasm = themes_groupby_dates_plot_streamgraph_newdata_monthly.getAllSteamGraphData(
         streamGraphDatasLabelsm)
 
     return render_template('themes.html', plot1=scatter1, plot2=scatter2, streamGraphDataLabelsList=streamGraphDatasLabels, streamGraphDataList=streamGraphDatas, streamGraphDataLabelsList2=streamGraphDatasLabelsm, streamGraphDataList2=streamGraphDatasm)

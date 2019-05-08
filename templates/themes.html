@@ -119,192 +119,11 @@
                     </header>
                     <div class="chart">
                         <!-- bar chart canvas element -->
-                        {#                                    <canvas id="myChart" ></canvas>#}
-                        <canvas id="chart" width="600" height="400"></canvas>
-                        {#                                    <canvas id="myChart" width="600" height="400"></canvas>#}
-                    </div>
-                    {#                                    // Global parameters:#}
-                    {#                                    // do not resize the chart canvas when its container does (keep at 600x400px)#}
-                    <script>
-                        {#var pieData = [#}
-                        {#    {% for item, label, colors in set %}#}
-                        {#      {#}
-                        {#        value: {{item}},#}
-                        {#        label: "{{label}}",#}
-                        {#        color : "{{colors}}"#}
-                        {#      },#}
-                        {#    {% endfor %}#}
-                        {#  ];#}
-                        {#  // get bar chart canvas#}
-                        {#  var mychart = document.getElementById("chart").getContext("2d");#}
-                        {#  steps = 10#}
-                        {#  max = {{ max }}#}
-                        {#  // draw pie chart#}
-                        {#  new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);#}
-
-
-
-                        {#Chart.defaults.global.responsive = false;#}
-                        {#                                    var ctx = document.getElementById("myChart").getContext("2d");#}
-                        {##}
-                        {#                                    // create the chart using the chart canvas#}
-                        {#                                    var myChart = new Chart(ctx, {#}
-                        {#                                      type: 'line',#}
-                        {#                                      data: chartData,#}
-                        {#                                    });#}
-                        {#                                    // define the chart data#}
-                        {#                                    var chartData = {#}
-                        {#                                        labels: [{% for item in labels %}#}
-                        {#                                            "{{item}}",#}
-                        {#                                        {% endfor %}],#}
-                        {#                                        datasets: [{#}
-                        {#                                            label: '{{ legend }}',#}
-                        {#                                            fill: true,#}
-                        {#                                            lineTension: 0.1,#}
-                        {#                                            backgroundColor: "rgba(75,192,192,0.4)",#}
-                        {#                                            borderColor: "rgba(75,192,192,1)",#}
-                        {#                                            borderCapStyle: 'butt',#}
-                        {#                                            borderDash: [],#}
-                        {#                                            borderDashOffset: 0.0,#}
-                        {#                                            borderJoinStyle: 'miter',#}
-                        {#                                            pointBorderColor: "rgba(75,192,192,1)",#}
-                        {#                                            pointBackgroundColor: "#fff",#}
-                        {#                                            pointBorderWidth: 1,#}
-                        {#                                            pointHoverRadius: 5,#}
-                        {#                                            pointHoverBackgroundColor: "rgba(75,192,192,1)",#}
-                        {#                                            pointHoverBorderColor: "rgba(220,220,220,1)",#}
-                        {#                                            pointHoverBorderWidth: 2,#}
-                        {#                                            pointHitRadius: 10,#}
-                        {#                                            pointRadius: 1,#}
-                        {#                                            data: [{% for item in values %}#}
-                        {#                                                {{item}},#}
-                        {#                                            {% endfor %}],#}
-                        {#                                            spanGaps: false#}
-                        {#                                        }]#}
-                        {#';'#}
-                        {#                                    };#}
-                        {#                                    // get chart canvas#}
-                        {#                                    var ctx = document.getElementById("myChart").getContext("2d");#}
-                        {##}
-                        {#                                    // create the chart using the chart canvas#}
-                        {#                                    var myChart = new Chart(ctx, {#}
-                        {#                                      type: 'line',#}
-                        {#                                      data: chartData,#}
-                        {#                                    });#}
-                    </script>
-                    {#                                    <div class="chart" id="chart">#}
-                    {#                                    <div class="chart" id="stream1">#}
-                    {#                                            <script>#}
-                    {#                                        <canvas id="chart" width="800" height="400"></canvas>#}
-                    {#                                        <canvas id="streamgraph" width="800" height="400"></canvas>#}
-                    {#</script>#}
-
-                    {#                                    </div>#}
-                    {#                                    <script>#}
-                    {##}
-                    {#var ctx = document.getElementById('streamgraph').getContext('2d');#}
-                    {#var newChart = new Chart(ctx).Streamgraph(data, options);#}
-                    {#data#}
-                    {#                                        var data = {<br/>#}
-                    {#                                            labels = ['January','February','March','April','May'],#}
-                    {#                                          datasets = [{#}
-                    {#                                              label: 'Dataset 1',#}
-                    {#                                              fillColor: 'rgba(255,0,0,0.5)', // optional#}
-                    {#                                              hoverColor: 'rgba(255,128,128,0.5)', // optional#}
-                    {#                                              textColor: 'rgba(255,255,255,0.2)', // optional#}
-                    {#                                              data: [2, 4, 6, 8, 10],#}
-                    {#                                              tooltipData: {#}
-                    {#                                                text: 'hello world',#}
-                    {#                                                number: 2#}
-                    {#                                              }#}
-                    {#                                            },#}
-                    {#                                            {#}
-                    {#                                              label: 'Dataset 2',#}
-                    {#                                              fillColor: 'rgba(0,255,0,0.5)', // optional#}
-                    {#                                              hoverColor: 'rgba(128,255,128,0.5)', // optional#}
-                    {#                                              textColor: 'rgba(0,0,0,0.2)', // optional#}
-                    {#                                              data: [1, 2, 3, 4, 5]#}
-                    {#                                            },#}
-                    {#                                          ];#}
-                    {#                                        };#}
-                    {##}
-                    {#var data = {labels = [], datasets = [ { label: 'Dataset 1', fillColor: 'rgba(255,0,0,0.5)', hoverColor: 'rgba(255,128,128,0.5)', textColor: 'rgba(255,255,255,0.2)', data: [], tooltipData: {text: 'hello world', number: 2}},];};#}
-                    {##}
-                    {#                                        var ctx = document.getElementById('streamgraph').getContext('2d');#}
-                    {#                                        var newChart = new Chart(ctx).Streamgraph(data, options);#}
-                    {#                                        #}
-                    {#                                        </script>#}
-                    <div class="chart">
-                        <!-- bar chart canvas element -->
-                        <canvas id="streamgraph" width="800" height="400"></canvas>
+{#                        <canvas id="streamgraph"></canvas>#}
+                        <canvas id="streamgraph" width="900" height="450"></canvas>
                         {#                                    <canvas id="myChart" width="600" height="400"></canvas>#}
                     </div>
                     <script>
-                        {#var streamData = {#}
-                        {#    labels : ['January', 'February', 'March', 'April', 'May'],#}
-                        {#    datasets : [#}
-                        {#        {#}
-                        {#            label: 'Dataset 1',#}
-                        {#            fillColor: 'rgba(255,0,0,0.5)', // optional#}
-                        {#            hoverColor: 'rgba(255,128,128,0.5)', // optional#}
-                        {#            textColor: 'rgba(255,255,255,0.2)', // optional#}
-                        {#            data: [2, 4, 6, 8, 10],#}
-                        {#            tooltipData: {#}
-                        {#                text: 'hello world',#}
-                        {#                number: 2#}
-                        {#            }#}
-                        {#        },#}
-                        {#        {#}
-                        {#            label: 'Dataset 2',#}
-                        {#            fillColor: 'rgba(0,255,0,0.5)', // optional#}
-                        {#            hoverColor: 'rgba(128,255,128,0.5)', // optional#}
-                        {#            textColor: 'rgba(0,0,0,0.2)', // optional#}
-                        {#            data: [1, 2, 3, 4, 5]#}
-                        {#        },#}
-                        {#    ]#}
-
-
-                        {#var streamData =#}
-                        {#    {#}
-                        {#        labels: [#}
-                        {#            {% for label in labels1 %}#}
-                        {#                "{{ label }}",#}
-                        {#            {% endfor %}#}
-                        {#        ],#}
-                        {#        datasets: [#}
-                        {#            {#}
-                        {#                label: "{{ label1 }}",#}
-                        {#                fillColor: 'rgba(255,0,0,0.5)',#}
-                        {#                hoverColor: 'rgba(255,128,128,0.5)',#}
-                        {#                textColor: 'rgba(255,255,255,0.2)',#}
-                        {#                data: [#}
-                        {#                    {% for data in data1 %}#}
-                        {#                        {{ data }},#}
-                        {#                    {% endfor %}#}
-                        {##}
-                        {#                ],#}
-                        {#                tooltipData: {#}
-                        {#                    text: 'hello world',#}
-                        {#                    number: 2#}
-                        {#                }#}
-                        {#            },#}
-                        {##}
-                        {#            {#}
-                        {#                label: "{{ label2 }}",#}
-                        {#                fillColor: 'rgba(0,255,0,0.5)',#}
-                        {#                hoverColor: 'rgba(128,255,128,0.5)',#}
-                        {#                textColor: 'rgba(0,0,0,0.2)',#}
-                        {#                data: [#}
-                        {#                    {% for datas in data2 %}#}
-                        {#                        {{ datas }},#}
-                        {#                    {% endfor %}#}
-                        {##}
-                        {#                ]#}
-                        {#            },#}
-                        {#        ]#}
-                        {#    }#}
-                        {#    #}
-
                             var streamData =
                             {
 
@@ -333,27 +152,8 @@
                                     },
                                 {% endfor %}
                                 ]
-                            }
+                            };
 
-                        {#                        #}
-                        {#                        {#}
-                        {#                            #}
-                        {#                            #}
-
-
-                        {#var streamData = [#}
-                        {#var streamData = [#}
-                        {#    {% for item, label, colors in set %}#}
-                        {#      {#}
-                        {#  dataset = [#}
-                        {#                                                  ce qu'il me faut ici c'est labels en haut, data
-                        The data structure should include labels for the y-axis, as well as an array of datasets, each including data and a corresponding label. #}
-                        {#      value: {{item}},#}
-                        {#      label: "{{label}}",#}
-                        {#      color : "{{colors}}"#}
-                        {#    },#}
-                        {#  {% endfor %}#}
-                        {#];#}
                         var options = {
                             colorAssignmentMethod : "verticalPosition",
                             {#colorAssignmentMethod : "sum",#}
@@ -368,7 +168,7 @@
                             {#colors: ["rgba(148, 124, 176, 1)","rgba(145, 61, 136, 1)"]#}
                             {#colors: ["rgba(148, 124, 176, 1)","rgba(115, 101, 152, 1)","rgba(142, 68, 173, 1)","rgba(102, 51, 153, 1)","rgba(145, 61, 136, 1)"]#}
                             {#a test une seule couleur#}
-                        }
+                        };
                         var mychart = document.getElementById("streamgraph").getContext("2d");
                         steps = 10
                         max = {{ max }}
@@ -377,17 +177,70 @@
 
                     </script>
                 </section>
-                {#                            <section>#}
-                {#                                    <header>#}
-                {#                                        <h3>Number of claims by themes stream graph</h3>#}
-                {#                                    </header>#}
-                {#                                        <div class="chart" id="streamgraph1">#}
-                {#                                            <script>#}
-                {#                                                var graphs = {{plot2 | safe}};#}
-                {#                                                Plotly.plot('streamgraph1',graphs,{});#}
-                {#                                            </script>#}
-                {#                                        </div>#}
-                {#							</section>#}
+                 <section>
+                    <header>
+                        <h3>Streamgraph of claims by themes by months</h3>
+                    </header>
+                    <div class="chart">
+                        <!-- bar chart canvas element -->
+                        <canvas id="streamgraph2" width="900" height="450"></canvas>
+{#                        <canvas id="streamgraph2" width="800" height="400"></canvas>#}
+                        {#                                    <canvas id="myChart" width="600" height="400"></canvas>#}
+                    </div>
+                    <script>
+                            var streamData2 =
+                            {
+
+                                labels: [
+                                    {% for label in streamGraphDataLabelsList2 %}
+                                        "{{ label }}",
+                                    {% endfor %}
+                                ],
+                                datasets: [
+                                    {% for streamGraphData in streamGraphDataList2 %}
+                                    {
+                                        label: "{{ streamGraphData.name }}",
+                                        {#fillColor: 'rgba(255,0,0,0.5)',#}
+                                        {#hoverColor: 'rgba(255,128,128,0.5)',#}
+                                        {#textColor: 'rgba(255,255,255,0.2)',#}
+                                        data: [
+                                            {% for data in streamGraphData.y %}
+                                                {{ data }},
+                                            {% endfor %}
+
+                                        ],
+                                        tooltipData: {
+                                            text: 'hello world',
+                                            number: 2
+                                        }
+                                    },
+                                {% endfor %}
+                                ]
+                            };
+
+                        var options2 = {
+                            colorAssignmentMethod : "verticalPosition",
+                            {#colorAssignmentMethod : "sum",#}
+                            labelPlacementMethod: "idealThenMaxHeight",
+                            labelMinimumSize: 4,
+                            labelFontColor: "rgba(236, 240, 241, 1)",
+                            {#labelFontColor: "rgba(232, 236, 241, 1)",#}
+                            {#labelFontColor: "rgba(255,255,255,0.2)",#}
+                            {#labelPlacementMethod: "MaxHeight",#}
+                            {#colors: ["rgba(241, 231, 254, 1)","rgba(102, 51, 153, 1)"]#}
+                            colors: ["rgba(102, 51, 153, 1)","rgba(135, 211, 124, 1)"]
+                            {#colors: ["rgba(148, 124, 176, 1)","rgba(145, 61, 136, 1)"]#}
+                            {#colors: ["rgba(148, 124, 176, 1)","rgba(115, 101, 152, 1)","rgba(142, 68, 173, 1)","rgba(102, 51, 153, 1)","rgba(145, 61, 136, 1)"]#}
+                            {#a test une seule couleur#}
+                        };
+                        var mychart2 = document.getElementById("streamgraph2").getContext("2d");
+                        steps = 10
+                        max = {{ max }}
+                            new Chart(document.getElementById("streamgraph2").getContext("2d")).Streamgraph(streamData2, options2);
+                        {#new Chart(document.getElementById("streamgraph").getContext("2d")).Streamgraph(streamData);#}
+
+                    </script>
+                </section>
             </article>
             <hr/>
             <div class="row">

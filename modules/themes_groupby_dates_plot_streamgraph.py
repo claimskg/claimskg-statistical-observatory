@@ -60,69 +60,69 @@ def create_distinctThemeRefList():
     # labels = []
 
 
-def economy():
-    filtre = df_themes_dates_cr_cw['economy'] == 1
-    dr = df_themes_dates_cr_cw[filtre]  # return datafram with only elements matching theme in parameter
-    # print(dr)
-    dSmall = dr[["id1", "date_cr_t", 'economy']]  # select only required columns
-    # print(dSmall)
-    dSmall['date_cr_t'] = pd.to_datetime(dSmall['date_cr_t'])  # parse datetime
-    df_result = dSmall.groupby(['economy', pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(
-        name='counts')
-    # df_result = dr.groupby(['themes', pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(name='counts')
-    # print(df_result)
-    # economy     date_cr_t      counts
-    # 0     1    2009 - 12 - 31  406
-    # labels = list(str(df_result['date_cr_t']))
-
-    # dates = pd.to_datetime(df_result['date_cr_t'])
-    # dates = dates.datetime.strftime('%Y')
-
-    # all_data['Order Day new'] = all_data['Order Day new'].dt.strftime('%Y-%m-%d')
-
-    dates = df_result['date_cr_t']
-
-    dates = dates.dt.strftime('%Y')
-    labels = dates.to_list()
-
-    # dates2 = dates.datetime.strftime('%Y')
-    # print(dates)
-    # print(dates2)
-    # dates = str(df_result['date_cr_t'])
-    # labels = dates.to_string().to_list()
-    # labels = dates.to_list()
-    # labels = labels.to_string()
-    # labels = str(labels)
-    # labels.append(dates)
-    # y = df_result['counts']
-    y = list(df_result['counts'])
-    # print(labels)
-    # print(y)
-    name = 'economy'
-    # name  = theme (=variable de la fonction)
-    return labels, name, y
-
-
-def development():
-    filtre = df_themes_dates_cr_cw['development'] == 1
-    dr = df_themes_dates_cr_cw[filtre]  # return datafram with only elements matching theme in parameter
-    # print(dr)
-    dSmall = dr[["id1", "date_cr_t", 'development']]  # select only required columns
-    # print(dSmall)
-    dSmall['date_cr_t'] = pd.to_datetime(dSmall['date_cr_t'])  # parse datetime
-    df_result = dSmall.groupby(['development', pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(
-        name='counts')
-    # print(df_result)
-    dates = df_result['date_cr_t']
-    dates = dates.dt.strftime('%Y')
-    labels = dates.to_list()
-    # print(dates)
-    y = list(df_result['counts'])
-    # print(labels)
-    # print(y)
-    name = 'development'
-    # name  = theme (=variable de la fonction)
-    return labels, name, y
+# def economy():
+#     filtre = df_themes_dates_cr_cw['economy'] == 1
+#     dr = df_themes_dates_cr_cw[filtre]  # return datafram with only elements matching theme in parameter
+#     # print(dr)
+#     dSmall = dr[["id1", "date_cr_t", 'economy']]  # select only required columns
+#     # print(dSmall)
+#     dSmall['date_cr_t'] = pd.to_datetime(dSmall['date_cr_t'])  # parse datetime
+#     df_result = dSmall.groupby(['economy', pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(
+#         name='counts')
+#     # df_result = dr.groupby(['themes', pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(name='counts')
+#     # print(df_result)
+#     # economy     date_cr_t      counts
+#     # 0     1    2009 - 12 - 31  406
+#     # labels = list(str(df_result['date_cr_t']))
+#
+#     # dates = pd.to_datetime(df_result['date_cr_t'])
+#     # dates = dates.datetime.strftime('%Y')
+#
+#     # all_data['Order Day new'] = all_data['Order Day new'].dt.strftime('%Y-%m-%d')
+#
+#     dates = df_result['date_cr_t']
+#
+#     dates = dates.dt.strftime('%Y')
+#     labels = dates.to_list()
+#
+#     # dates2 = dates.datetime.strftime('%Y')
+#     # print(dates)
+#     # print(dates2)
+#     # dates = str(df_result['date_cr_t'])
+#     # labels = dates.to_string().to_list()
+#     # labels = dates.to_list()
+#     # labels = labels.to_string()
+#     # labels = str(labels)
+#     # labels.append(dates)
+#     # y = df_result['counts']
+#     y = list(df_result['counts'])
+#     # print(labels)
+#     # print(y)
+#     name = 'economy'
+#     # name  = theme (=variable de la fonction)
+#     return labels, name, y
+#
+#
+# def development():
+#     filtre = df_themes_dates_cr_cw['development'] == 1
+#     dr = df_themes_dates_cr_cw[filtre]  # return datafram with only elements matching theme in parameter
+#     # print(dr)
+#     dSmall = dr[["id1", "date_cr_t", 'development']]  # select only required columns
+#     # print(dSmall)
+#     dSmall['date_cr_t'] = pd.to_datetime(dSmall['date_cr_t'])  # parse datetime
+#     df_result = dSmall.groupby(['development', pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(
+#         name='counts')
+#     # print(df_result)
+#     dates = df_result['date_cr_t']
+#     dates = dates.dt.strftime('%Y')
+#     labels = dates.to_list()
+#     # print(dates)
+#     y = list(df_result['counts'])
+#     # print(labels)
+#     # print(y)
+#     name = 'development'
+#     # name  = theme (=variable de la fonction)
+#     return labels, name, y
 
 
 class StreamGraphData:
@@ -213,15 +213,3 @@ def getAllSteamGraphData(labelList):
     # je retourne des arrays que je récup bruts dans l'app avec les bons noms et je boucle dessus avec le jinja
 
     # à récup : name, y = [values], et en x un label qui seront les dates attention string je pense
-
-    # layout = dict(title = "Nombres d'assertions par themes",
-    #               xaxis = dict(title = 'Années'),
-    #               yaxis = dict(title = "Nombres d'assertions"),
-    #               )
-
-    # scatter_themes_JSON = json.dumps(data=data, layout=layout, cls=plotly.utils.PlotlyJSONEncoder)
-    # scatter_themes_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-    #
-    # return scatter_themes_JSON
-
-# create_scatter_themes_dates()
