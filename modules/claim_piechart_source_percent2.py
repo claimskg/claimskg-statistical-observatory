@@ -4,13 +4,18 @@ import json
 import plotly
 import plotly.graph_objs as go
 import pandas as pd
+from pathlib import Path
 
 # pd.set_option('display.max_colwidth', -1)
 # pd.set_option('display.max_columns', None)
 
 def create_piechart_source():
     ##########################load df
-    df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    base_path = Path(__file__).parent
+    file_path = (base_path / "df_complete.csv").resolve()
+    df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
     # list_auteur = list(df_complete['source'].unique())
     # print(list_auteur)
@@ -30,15 +35,15 @@ def create_piechart_source():
     # sum = claim_by_sources_id_unique['counts'].sum()
     # print(sum)
     #ok!
-    print(len(claim_by_sources_id_unique['counts']))
+    # print(len(claim_by_sources_id_unique['counts']))
     sizes = []
     labels = []
 
     for i in range(len(claim_by_sources_id_unique['counts'])):
         sizes.append(claim_by_sources_id_unique['counts'][i])
         labels.append(claim_by_sources_id_unique['source'][i])
-    print(sizes)
-    print(labels)
+    # print(sizes)
+    # print(labels)
 
 
 #####################################figure
@@ -59,4 +64,4 @@ def create_piechart_source():
 
     # print(piechart_sources_JSON)
     return piechart_sources_JSON
-create_piechart_source()
+# create_piechart_source()

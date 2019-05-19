@@ -1,5 +1,5 @@
 import re
-
+from pathlib import Path
 
 def dico_themes():
     themes = {}
@@ -9,7 +9,11 @@ def dico_themes():
     somme_claim_themes = []
 
     # fk2 = open("/home/dadou/projects/ter_ips/claim_stat/cle_classes_true.txt", "r")
-    fk2 = open("/home/dadou/projects/ter_ips/claim_stat/cle_classes_add1_newdata.txt", "r")
+    base_path = Path(__file__).parent
+    file_path = (base_path / "cle_classes_add1_newdata.txt").resolve()
+    fk2 = open(file_path, "r")
+    # fk2 = open("/home/dadou/projects/ter_ips/claim_stat/cle_classes_add1_newdata.txt", "r")
+    # fk2 = open("/home/dadou/projects/ter_ips/claim_stat/cle_classes_add1_newdata.txt", "r")
     # fk2 = open("/home/dadou/projects/ter_ips/claim_stat/cle_classes_add1.txt", "r")
     if fk2:
         # patternk2 ="(\w+[-]?\w*\s?\w*\s?\w*),\d+:*"
@@ -61,6 +65,6 @@ def dico_themes():
     # #     for i in list_themes:
     # #         themes[j] = i
     #
-    print(themes)
+    # print(themes)
     return themes
-dico_themes()
+# dico_themes()

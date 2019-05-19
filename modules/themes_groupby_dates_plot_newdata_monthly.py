@@ -3,18 +3,23 @@ import csv
 import pandas as pd
 import plotly
 import plotly.graph_objs as go
+from pathlib import Path
 # from modules import theme_indexer_newdata
 
 def create_scatter_themes_dates_newdata_monthly():
     #pd.read csv
-    df_themes_indexed = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_indexed.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_themes_indexed = pd.read_csv('df_destack_themes_indexed.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    base_path = Path(__file__).parent
+    file_path = (base_path / "df_destack_themes_indexed.csv").resolve()
+    df_themes_indexed = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_themes_indexed = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_indexed.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
 
     #creation liste de themes distincts
-    print(df_themes_indexed['themes'])
+    # print(df_themes_indexed['themes'])
     #
     df_list_themes = df_themes_indexed['themes'].dropna().drop_duplicates()
-    print(df_list_themes)
+    # print(df_list_themes)
     # #
     # # # df_list_themes = str(df_destack_set['themes'].dropna().values.tolist())
     # # print(df_list_themes)
@@ -55,7 +60,7 @@ def create_scatter_themes_dates_newdata_monthly():
 
     distinctThemeRefList3 = list(set(distinctThemeRefList2))
     distinctThemeRefList3.sort()
-    print(distinctThemeRefList3)
+    # print(distinctThemeRefList3)
 
 # filtre = df_themes_indexed['women'] == 1
 # filtred2 = df_themes_indexed['date2'].notnull()
@@ -119,4 +124,4 @@ def create_scatter_themes_dates_newdata_monthly():
     #
     return scatter_themes_newdata_monthly_JSON
 
-print(create_scatter_themes_dates_newdata_monthly())
+# print(create_scatter_themes_dates_newdata_monthly())

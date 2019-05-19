@@ -6,13 +6,20 @@ from modules import theme_list_exceptions
 import json
 from copy import deepcopy
 # import joinCsventkw
+from pathlib import Path
+
+
 pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
 
 # dico_themes = liste_themes2.dico_themes()
 dico_themes = theme_list_exceptions.get_newdata_dico_themes()
 #load df
-df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+base_path = Path(__file__).parent
+file_path = (base_path / "df_complete.csv").resolve()
+df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 # df_ent_kw = joinCsventkw.df_ent_kw()
 
 # df_complete['themes']='NA'
@@ -46,7 +53,7 @@ distinctThemeRefList_strip = []
 for i in distinctThemeRefList:
     new_i = str(i).lstrip().lower()
     distinctThemeRefList_strip.append(new_i)
-print(distinctThemeRefList_strip)
+# print(distinctThemeRefList_strip)
 
 dico_themes_extended = deepcopy(dico_themes)
 # print(dico_themes.items())
@@ -152,7 +159,7 @@ def get_rid_doubles():
         dico_final[key] = list(set(values))
     return dico_final
 
-dico_without_db = get_rid_doubles()
+# dico_without_db = get_rid_doubles()
 # print(len(dico_without_db['health']))
 # print(dico_without_db['health'])
 # def remove_double():

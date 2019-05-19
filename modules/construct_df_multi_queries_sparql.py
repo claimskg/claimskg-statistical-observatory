@@ -79,7 +79,7 @@ qulabel ="""PREFIX itsrdf: <https://www.w3.org/2005/11/its/rdf#>
         PREFIX schema: <http://schema.org/>
         PREFIX dbr: <http://dbpedia.org/resource/>
         PREFIX dbo: <http://dbpedia.org/ontology/>
-        PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
+        PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>522222222222222333
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX owl: <http://www.w3.org/TR/owl-syntax>
         SELECT distinct ?id1 ?label

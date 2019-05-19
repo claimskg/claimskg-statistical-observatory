@@ -44,10 +44,10 @@ def create_barchart_nb_means_global():
         title='Means of item by claims',
         barmode='group'
     )
-    print(data)
+    # print(data)
     barchart_nb_means_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
 
 
     # print(piechart_labels_JSON)
     return barchart_nb_means_JSON
-create_barchart_nb_means_global()
+# create_barchart_nb_means_global()

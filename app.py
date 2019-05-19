@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from modules import claim_review_piechart_rating_global2
+from modules import claim_review_piechart_rating_global2, theme_indexer_newdata, drop_doubles_col_themes_destack, \
+    add_themes_df2_keywords_after_destack, destack_all
 from modules import claim_piechart_source_percent2
 from modules import means_ent_kw_barcharts2
 from modules import themes_groupby_dates_plot_newdata
@@ -19,37 +20,66 @@ from modules import themes_groupby_dates_plot_streamgraph_newdata_monthly
 
 app = Flask(__name__)
 
+#https://stackoverflow.com/questions/44501130/get-path-relative-to-executed-flask-app
 
-# @app.route('/')
-# def accueil():
-#     pie1 = claim_review_piechart_rating_global.create_piechart_label()
-#     pie2 = claim_piechart_source_percent.create_piechart_source()
-#     #rajouter les plots ici dans une liste, la render, puis dans jinja afficher 1, affiche 2
-#     # return render_template('index.html', plots=(pie1,pie2))
-#     bar1 = means_ent_kw_barcharts2.create_barchart_nb_means_global()
-#     bar2 = percent_barcharts_ent_kw_author.create_barchart_percent_global()
-#     return render_template('index.html', plot1=pie1, plot2=pie2, plot3=bar1, plot4=bar2)
+# with app.open_resource('schema.sql') as f:
+#     contents = f.read()
+#     do_something_with(contents)
+
+@app.route('/generation_csv_themes')
+def generate_themes():
+    print("start gen 1")
+    g1 = destack_all.explode_keywords()
+    print(g1)
+
+    print("start gen 2")
+    g2 = add_themes_df2_keywords_after_destack.destack_themes_from_exploded()
+    print(g2)
+
+    print("start gen 3")
+    g3 = drop_doubles_col_themes_destack.set_destack_themes()
+    print(g3)
+
+    print("start gen 4")
+    g4 = theme_indexer_newdata.themes_indexed()
+    print(g4)
+
+    return '''{"action":"generate_theme", "status":"complete"}'''
+
 
 @app.route('/')
 def accueil():
+    #changé
     pie1 = claim_review_piechart_rating_global2.create_piechart_label()
+
+    #changé
     pie2 = claim_piechart_source_percent2.create_piechart_source()
     # rajouter les plots ici dans une liste, la render, puis dans jinja afficher 1, affiche 2
     # return render_template('index.html', plots=(pie1,pie2))
+
+    #changé
     bar1 = means_ent_kw_barcharts2.create_barchart_nb_means_global()
+
+    #changé
     bar2 = percent_barcharts_ent_kw_author.create_barchart_percent_global()
+
+    #changé
     list_resume = numbers_claimskg_resume.list_numbers_resume()[0]
     # list_resume = numbers_claimskg_resume.dico_numbers_resume()
+
+    #changé
     scatter1 = fake_news_on_net_scatter.scatter_author_on_net_label()
+
     # blank = "
     # bar3 = barchartsSourceVeracite.create_barchart_soureVeracite()
+
+    ##changé
     bar4 = means_ent_kw_barcharts2_Source.create_barchart_nb_means_Source()
     # bar3k = means_ent_kw_barcharts2_Source.create_barchart_nb_means_Source()
     barSV = barchartsSourceVeracite.create_barchart_soureVeracite()
     return render_template('index.html', plot1=pie1, plot2=pie2, plot3=bar1, plot4=bar2, plot5=scatter1,
                            mylist=list_resume, plot7=bar4, plotSV= barSV)
     # return render_template('index.html', plot1=pie1, plot2=pie2, plot3=bar1, plot4=bar2, plot5=scatter1, mylist=list_resume, plot6=bar3, plot7=bar4)
-
 
 @app.route('/themes')
 def themes():
@@ -133,3 +163,8 @@ def themes():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+

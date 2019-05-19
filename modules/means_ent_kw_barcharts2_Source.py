@@ -5,12 +5,29 @@ import pandas as pd
 import numpy as np
 from modules import entites_resume2_Source
 from modules import keywords_resume_Source
+import os
+from pathlib import Path
 
 def create_barchart_nb_means_Source():
-    df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_complete_total = pd.read_csv('df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
+
+
+    base_path = Path(__file__).parent
+    file_path = (base_path / "df_complete.csv").resolve()
+    # file_path = (base_path / "../data/test.csv").resolve()
+    df_complete_total = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # print(df_complete_total)
+    # with open(file_path) as f:
+    #     test = [line for line in csv.reader(f)]
+    # df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # with app.open_resource('schema.sql') as f:
+    #     contents = f.read()
+    #     do_something_with(contents)
+    # rel = os.path.relpath('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv')
+    # print(rel)
     #filtretoue les source
     source1=list(set(list(df_complete_total['source'])))
-    print(source1)
+    # print(source1)
 
     #bcle sur les sources
     #barchart_nb_means_JSON_Source=[]
@@ -25,13 +42,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
 # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -74,13 +91,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -123,13 +140,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -172,13 +189,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -221,13 +238,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -271,13 +288,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -317,7 +334,7 @@ def create_barchart_nb_means_Source():
         title='Means of item by claims',
         barmode='group'
     )
-    print(data)
+    # print(data)
 
     barchart_nb_means_JSON_Source = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
 
