@@ -1,160 +1,3 @@
-# import json
-# import plotly
-# import plotly.graph_objs as go
-# import pandas as pd
-# from modules import entites_resume2_Source
-# from modules import keywords_resume_Source
-#
-# def create_barchart_nb_means_Source():
-#     df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
-#     #filtretoue les source
-#     source1=list(set(list(df_complete_total['source'])))
-#
-#     #bcle sur les sources
-#     #barchart_nb_means_JSON_Source=[]
-#     data=[]
-#     i = 0
-#     for source in source1:
-#         df_complete=df_complete_total[df_complete_total['source']==str(source)]
-#         if str(source)!='nan':
-#             m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-#             m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-#
-#             m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-#             m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-#
-#             labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
-#
-#             values = []
-#             values.append(m_ent_pc)
-#             values.append(m_ent_pc_we)
-#             values.append(m_kw_pc)
-#             values.append(m_kw_pc_wk)
-#             print(values)
-#             colors = ['blue', 'lightskyblue','red','yellow','green','black']
-#             trace0 = go.Bar(
-#                     x=labels,
-#                     y=values,
-#                     name=source,
-#                     marker=dict(color=colors[i]))
-#
-#             i=i+1
-#             #trace1 = go.Bar(
-#                    # x=[labels[1],labels[3]],
-#                     #y=[values[1],values[3]],
-#                    # name='Claims with corresponding item'+source,
-#                    # marker=dict(color=colors[1]))
-#
-#
-#             data.append(trace0)
-#
-#             layout = go.Layout(
-#                 title='Means of item by claims',
-#                 barmode='group'
-#             )
-#
-#     barchart_nb_means_JSON_Source=json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-#
-#     # print(piechart_labels_JSON)
-#     return barchart_nb_means_JSON_Source
-# create_barchart_nb_means_Source()
-
-
-# import json
-# import plotly
-# import plotly.graph_objs as go
-# import pandas as pd
-# import numpy as np
-# from modules import entites_resume2_Source
-# from modules import keywords_resume_Source
-#
-# def create_barchart_nb_means_Source():
-#     df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
-#     #filtretoue les source
-#     source1=list(set(list(df_complete_total['source'])))
-#     print(source1)
-#
-#     #bcle sur les sources
-#     #barchart_nb_means_JSON_Source=[]
-#     data=[]
-#     labels = []
-#     values = []
-#     i = 0
-#     for source in source1:
-#         filtre = df_complete_total['source']==str(source)
-#         df_complete=df_complete_total[filtre]
-#         # print(df_complete)
-#         if str(source)!='nan':
-#             print(str(source))
-#             m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-#             print(m_ent_pc_we)
-#             m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-#             print(m_ent_pc)
-#             m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-#             print(m_kw_pc_wk)
-#             m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-#             print(m_kw_pc)
-#
-#         # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-#
-#             # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
-#
-#
-#             if not np.isnan(m_ent_pc):
-#                 labels.append('Entities')
-#                 values.append(m_ent_pc)
-#
-#             if not np.isnan(m_ent_pc_we):
-#                 labels.append('Entities for claims with entities')
-#                 values.append(m_ent_pc_we)
-#
-#             if not np.isnan(m_kw_pc):
-#                 labels.append('Keywords')
-#                 values.append(m_kw_pc)
-#
-#             if not np.isnan(m_kw_pc_wk):
-#                 labels.append('Keywords for claims with keywords')
-#                 values.append(m_kw_pc_wk)
-#
-#             # print(values)
-#             # print(labels)
-#
-#             # colors = ['blue', 'lightskyblue','red','yellow','green','black']
-#             # trace0 = [go.Bar(
-#             #         x=labels,
-#             #         y=values,
-#             #         name=source,
-#             #         marker=dict(color=colors[i]))]
-#
-#             # trace = str(i)
-#             trace0 = [go.Bar(
-#                 x=labels,
-#                 y=values,
-#                 name=source)]
-#
-#             i = i + 1
-#             #trace1 = go.Bar(
-#                    # x=[labels[1],labels[3]],
-#                     #y=[values[1],values[3]],
-#                    # name='Claims with corresponding item'+source,
-#                    # marker=dict(color=colors[1]))
-#
-#
-#             # data.append(trace0)
-#             data += [trace0]
-#
-#             layout = go.Layout(
-#                 title='Means of item by claims',
-#                 barmode='group'
-#             )
-#             print(data)
-#
-#     barchart_nb_means_JSON_Source = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-#
-#     # print(piechart_labels_JSON)
-#     return barchart_nb_means_JSON_Source
-# create_barchart_nb_means_Source()
-
 import json
 import plotly
 import plotly.graph_objs as go
@@ -162,12 +5,29 @@ import pandas as pd
 import numpy as np
 from modules import entites_resume2_Source
 from modules import keywords_resume_Source
+import os
+from pathlib import Path
 
 def create_barchart_nb_means_Source():
-    df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_complete_total = pd.read_csv('df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
+
+
+    base_path = Path(__file__).parent
+    file_path = (base_path / "df_complete.csv").resolve()
+    # file_path = (base_path / "../data/test.csv").resolve()
+    df_complete_total = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # print(df_complete_total)
+    # with open(file_path) as f:
+    #     test = [line for line in csv.reader(f)]
+    # df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # with app.open_resource('schema.sql') as f:
+    #     contents = f.read()
+    #     do_something_with(contents)
+    # rel = os.path.relpath('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv')
+    # print(rel)
     #filtretoue les source
     source1=list(set(list(df_complete_total['source'])))
-    print(source1)
+    # print(source1)
 
     #bcle sur les sources
     #barchart_nb_means_JSON_Source=[]
@@ -182,13 +42,13 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
 # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
@@ -196,19 +56,19 @@ def create_barchart_nb_means_Source():
 
 
     if not np.isnan(m_ent_pc):
-        labels.append('Entities')
+        labels.append('Mean of entities for all claims')
         values.append(m_ent_pc)
 
     if not np.isnan(m_ent_pc_we):
-        labels.append('Entities for claims with entities')
+        labels.append('Mean of entities for claims with entities')
         values.append(m_ent_pc_we)
 
     if not np.isnan(m_kw_pc):
-        labels.append('Keywords')
+        labels.append('Mean of keywords for all claims')
         values.append(m_kw_pc)
 
     if not np.isnan(m_kw_pc_wk):
-        labels.append('Keywords for claims with keywords')
+        labels.append('Mean of keywords for claims with keywords')
         values.append(m_kw_pc_wk)
 
     # print(values)
@@ -231,32 +91,32 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
     # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
-        labels1.append('Entities')
+        labels1.append('Mean of entities for all claims')
         values1.append(m_ent_pc)
 
     if not np.isnan(m_ent_pc_we):
-        labels1.append('Entities for claims with entities')
+        labels1.append('Mean of entities for claims with entities')
         values1.append(m_ent_pc_we)
 
     if not np.isnan(m_kw_pc):
-        labels1.append('Keywords')
+        labels1.append('Mean of keywords for all claims')
         values1.append(m_kw_pc)
 
     if not np.isnan(m_kw_pc_wk):
-        labels1.append('Keywords for claims with keywords')
+        labels1.append('Mean of keywords for claims with keywords')
         values1.append(m_kw_pc_wk)
 
     # print(values)
@@ -280,32 +140,32 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
     # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
-        labels2.append('Entities')
+        labels2.append('Mean of entities for all claims')
         values2.append(m_ent_pc)
 
     if not np.isnan(m_ent_pc_we):
-        labels2.append('Entities for claims with entities')
+        labels2.append('Mean of entities for claims with entities')
         values2.append(m_ent_pc_we)
 
     if not np.isnan(m_kw_pc):
-        labels2.append('Keywords')
+        labels2.append('Mean of keywords for all claims')
         values2.append(m_kw_pc)
 
     if not np.isnan(m_kw_pc_wk):
-        labels2.append('Keywords for claims with keywords')
+        labels2.append('Mean of keywords for claims with keywords')
         values2.append(m_kw_pc_wk)
 
     # print(values)
@@ -329,32 +189,32 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
     # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
-        labels3.append('Entities')
+        labels3.append('Mean of entities for all claims')
         values3.append(m_ent_pc)
 
     if not np.isnan(m_ent_pc_we):
-        labels3.append('Entities for claims with entities')
+        labels3.append('Mean of entities for claims with entities')
         values3.append(m_ent_pc_we)
 
     if not np.isnan(m_kw_pc):
-        labels3.append('Keywords')
+        labels3.append('Mean of keywords for all claims')
         values3.append(m_kw_pc)
 
     if not np.isnan(m_kw_pc_wk):
-        labels3.append('Keywords for claims with keywords')
+        labels3.append('Mean of keywords for claims with keywords')
         values3.append(m_kw_pc_wk)
 
     # print(values)
@@ -378,32 +238,32 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
     # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
-        labels4.append('Entities')
+        labels4.append('Mean of entities for all claims')
         values4.append(m_ent_pc)
 
     if not np.isnan(m_ent_pc_we):
-        labels4.append('Entities for claims with entities')
+        labels4.append('Mean of entities for claims with entities')
         values4.append(m_ent_pc_we)
 
     if not np.isnan(m_kw_pc):
-        labels4.append('Keywords')
+        labels4.append('Mean of keywords for all claims')
         values4.append(m_kw_pc)
 
     if not np.isnan(m_kw_pc_wk):
-        labels4.append('Keywords for claims with keywords')
+        labels4.append('Mean of keywords for claims with keywords')
         values4.append(m_kw_pc_wk)
 
     # print(values)
@@ -428,32 +288,32 @@ def create_barchart_nb_means_Source():
     # if str(source)!='nan':
     #     print(str(source))
     m_ent_pc_we = entites_resume2_Source.moy_ent_per_claims(df_complete)[0]
-    print(m_ent_pc_we)
+    # print(m_ent_pc_we)
     m_ent_pc = entites_resume2_Source.moy_ent_per_claims(df_complete)[1]
-    print(m_ent_pc)
+    # print(m_ent_pc)
     m_kw_pc_wk = keywords_resume_Source.moy_keywords_per_claims(df_complete)[0]
-    print(m_kw_pc_wk)
+    # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
-    print(m_kw_pc)
+    # print(m_kw_pc)
 
     # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
 
     # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
-        labels5.append('Entities')
+        labels5.append('Mean of entities for all claims')
         values5.append(m_ent_pc)
 
     if not np.isnan(m_ent_pc_we):
-        labels5.append('Entities for claims with entities')
+        labels5.append('Mean of entities for claims with entities')
         values5.append(m_ent_pc_we)
 
     if not np.isnan(m_kw_pc):
-        labels5.append('Keywords')
+        labels5.append('Mean of keywords for all claims')
         values5.append(m_kw_pc)
 
     if not np.isnan(m_kw_pc_wk):
-        labels5.append('Keywords for claims with keywords')
+        labels5.append('Mean of keywords for claims with keywords')
         values5.append(m_kw_pc_wk)
 
     # print(values)
@@ -474,7 +334,7 @@ def create_barchart_nb_means_Source():
         title='Means of item by claims',
         barmode='group'
     )
-    print(data)
+    # print(data)
 
     barchart_nb_means_JSON_Source = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
 

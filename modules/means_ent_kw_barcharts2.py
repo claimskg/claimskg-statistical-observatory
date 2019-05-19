@@ -11,7 +11,7 @@ def create_barchart_nb_means_global():
     m_kw_pc_wk = keywords_resume.moy_keywords_per_claims()[0]
     m_kw_pc = keywords_resume.moy_keywords_per_claims()[1]
 
-    labels = ['Entities for all claims', 'Entities for claims with entities', 'Keywords for all claims', 'Keywords for claims with keywords']
+    labels = ['Mean of entities for all claims', 'Mean of entities for claims with entities', 'Mean of keywords for all claims', 'Mean of keywords for claims with keywords']
 
     values = []
     values.append(m_ent_pc)
@@ -44,10 +44,10 @@ def create_barchart_nb_means_global():
         title='Means of item by claims',
         barmode='group'
     )
-    print(data)
+    # print(data)
     barchart_nb_means_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
 
 
     # print(piechart_labels_JSON)
     return barchart_nb_means_JSON
-create_barchart_nb_means_global()
+# create_barchart_nb_means_global()

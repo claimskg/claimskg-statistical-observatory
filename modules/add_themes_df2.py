@@ -3,11 +3,17 @@ import pandas as pd
 import csv
 from modules import liste_themes2
 # import joinCsventkw
+from pathlib import Path
+
+
 
 dico_themes = liste_themes2.dico_themes()
 
 #load df
-df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+base_path = Path(__file__).parent
+file_path = (base_path / "df_complete.csv").resolve()
+df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
 # df_ent_kw = joinCsventkw.df_ent_kw()
 
 df_complete['themes']='NA'

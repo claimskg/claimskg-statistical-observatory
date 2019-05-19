@@ -1,13 +1,24 @@
 import json
 import statistics
 import pandas as pd
+from pathlib import Path
 
 pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
 
 ##########################load df
 # df_complete = pd.read_csv('/../../../../modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# df_complete = pd.read_csv('../modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+
+base_path = Path(__file__).parent
+file_path = (base_path / "df_complete.csv").resolve()
+    # file_path = (base_path / "../data/test.csv").resolve()
+df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# print(df_complete)
+
+
+# df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 #à reflechir à appeler sur une df, à rajouter comme paramètre aux fonctions
 
 ########################récup nb de claims total
@@ -52,8 +63,8 @@ def percent_claim_with_entities():
     nb_cr_w_ent = claim_with_entities()[1]
     percent_ent_cw = round((nb_cw_w_ent/ cw * 100), 2)
     percent_ent_cr = round((nb_cr_w_ent/ cr * 100), 2)
-    print(percent_ent_cw)
-    print(percent_ent_cr)
+    # print(percent_ent_cw)
+    # print(percent_ent_cr)
     return percent_ent_cw, percent_ent_cr
 # percent_claim_with_entities()
 #
@@ -89,36 +100,4 @@ def moy_ent_per_claims():
     # print(moy_all)
     return moy, moy_all
 
-
-
-
-
-
-
-
-
-#pour faire une moy sur celles qui en ont:
-
-# df_result = groupby([])['id1'].size()
-# df_result = dr.groupby([theme, pd.Grouper(key='date_cr_t', freq='Y')])['id1'].size().reset_index(name='counts')
-#
-#
-# def moy_ent_per_claims():
-#     nb_cw_with_ent = claim_with_entities()[0]
-#     nb_cr_with_ent = claim_with_entities()[1]
-#     #dico de claims avec liste entites
-#     #ce que je cherche à obtenir = nb distinct entites par claims
-#
-#
-#     nb_ent_pc = {}
-#     for key,val in dic_ent_l.items():
-#         nb_ent_pc[key]= len(val)
-#
-#     m_ent_pc_wc = round(statistics.mean(nb_ent_pc.values()),2)
-#     print(m_ent_pc_wc)
-#         #    return m
-#     cw = claims_total()
-#     m_ent_pc = round(sum(nb_ent_pc.values())/cw,2)
-#     print(m_ent_pc)
-#     return m_ent_pc_wc, m_ent_pc, nb_ent_pc
-# moy_ent()
+# moy_ent_per_claims()

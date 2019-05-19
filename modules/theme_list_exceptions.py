@@ -1,12 +1,17 @@
 import pandas as pd
 from modules import liste_themes2
 from copy import deepcopy
+from pathlib import Path
 
 def get_newdata_dico_themes():
     dico_themes = liste_themes2.dico_themes()
 
     #load df
-    df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    base_path = Path(__file__).parent
+    file_path = (base_path / "df_complete.csv").resolve()
+    df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+    # df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
     #prepare list1
     df_complete['keywords'] = df_complete['keywords'].str.split(',')
@@ -91,7 +96,7 @@ def get_newdata_dico_themes():
     dico_themes['economy'].extend(economy_processed)
     dico_themes['economy'].remove('aid')
     dico_themes['economy'].remove('aid')
-    print(dico_themes['economy'])
+    # print(dico_themes['economy'])
     dico_themes['environment'].extend(environment1_processed)
     dico_themes['environment'].remove('sea')
     dico_themes['health'].extend(health_processed)
@@ -108,14 +113,5 @@ def get_newdata_dico_themes():
     dico_themes['laws'].remove('law')
     # print(dico_themes['laws'])
     # print(dico_themes)
-
-    #for check in csv
-    # with open('newdata_themes_keywords_exceptions.csv', 'w') as f:
-    #     for key in dico_themes.keys():
-    #         f.write("%s,%s\n"%(key,dico_themes[key]))
-
-    # def dico_with_exceptions(dico, list):
-    #     dico_exceptions = deepcopy(dico)
-    #     for k,v in dico.items():
     return dico_themes
-get_newdata_dico_themes()
+# get_newdata_dico_themes()

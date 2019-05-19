@@ -2,10 +2,16 @@ import json
 import statistics
 import pandas as pd
 from modules import entites_resume2
-
+from pathlib import Path
 
 ##########################load df
-df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+base_path = Path(__file__).parent
+file_path = (base_path / "df_complete.csv").resolve()
+    # file_path = (base_path / "../data/test.csv").resolve()
+df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# print(df_complete)
+# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
 ########################récup nb de claims total
 nb_claims_total = entites_resume2.claims_total()[0]
@@ -33,8 +39,8 @@ def percent_claim_with_keywords():
     nb_cr_w_kw = claim_with_keywords()[1]
     percent_kw_cw = round((nb_cw_w_kw/ cw * 100), 2)
     percent_kw_cr = round((nb_cr_w_kw/ cw * 100), 2)
-    print(percent_kw_cw)
-    print(percent_kw_cr)
+    # print(percent_kw_cw)
+    # print(percent_kw_cr)
     return percent_kw_cw, percent_kw_cr
 # percent_claim_with_keywords()
 
@@ -43,9 +49,9 @@ def percent_ent_keywords():
         df_filter2 = df_complete[filtre_2]
         # print(df_filter2)
         nb_c_with_2 = len(df_filter2['id1'].unique())
-        print(nb_c_with_2)
+        # print(nb_c_with_2)
         percent_with2 = round((nb_c_with_2 / nb_claims_total * 100), 2)
-        print(percent_with2)
+        # print(percent_with2)
         return percent_with2
 # percent_ent_keywords()
 
