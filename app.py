@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from modules import claim_review_piechart_rating_global2, theme_indexer_newdata, drop_doubles_col_themes_destack, \
-    add_themes_df2_keywords_after_destack, destack_all
+    add_themes_df2_keywords_after_destack, destack_all, construct_df_multi_queries_sparql
 from modules import claim_piechart_source_percent2
 from modules import means_ent_kw_barcharts2
 from modules import themes_groupby_dates_plot_newdata
@@ -14,17 +14,27 @@ from modules import means_ent_kw_barcharts2_Source
 # from modules import themes_groupby_dates_plot_streamgraph_hot_period_monthly
 from modules import themes_groupby_dates_plot_streamgraph_newdata
 from modules import themes_groupby_dates_plot_streamgraph_newdata_monthly
+from modules import Evolut_Nbr_Label_Source
+from modules import Evolut_Nbr_Label_SourceMois
+from modules import Data_Source_Veracite
 
-# from modules import streamchart_themes
 
 
 app = Flask(__name__)
 
-#https://stackoverflow.com/questions/44501130/get-path-relative-to-executed-flask-app
+@app.route('/dataframe_generation')
+def generate_global_dataframe():
+    print("start global df generation")
+    generation_df = construct_df_multi_queries_sparql.generate_global_dataframe()
+    print(generation_df)
+    return '''{"action":"generate_dataframe", "status":"complete"}'''
 
-# with app.open_resource('schema.sql') as f:
-#     contents = f.read()
-#     do_something_with(contents)
+@app.route('/dataframe_per_label_generation')
+def generate_labels_dataframe():
+    print("start per label df generation")
+    generation_pl = Data_Source_Veracite.generate_per_label_dataframe()
+    print(generation_pl)
+    return '''{"action":"generate_labels", "status":"complete"}'''
 
 @app.route('/generation_csv_themes')
 def generate_themes():
@@ -43,37 +53,23 @@ def generate_themes():
     print("start gen 4")
     g4 = theme_indexer_newdata.themes_indexed()
     print(g4)
-
     return '''{"action":"generate_theme", "status":"complete"}'''
 
-
 @app.route('/')
-def accueil():
-    #changé
+def base():
+    return acceuil()
+
+@app.route('/index.html')
+def index():
+    return acceuil()
+def acceuil() :
     pie1 = claim_review_piechart_rating_global2.create_piechart_label()
-
-    #changé
     pie2 = claim_piechart_source_percent2.create_piechart_source()
-    # rajouter les plots ici dans une liste, la render, puis dans jinja afficher 1, affiche 2
-    # return render_template('index.html', plots=(pie1,pie2))
-
-    #changé
     bar1 = means_ent_kw_barcharts2.create_barchart_nb_means_global()
-
-    #changé
     bar2 = percent_barcharts_ent_kw_author.create_barchart_percent_global()
-
-    #changé
     list_resume = numbers_claimskg_resume.list_numbers_resume()[0]
     # list_resume = numbers_claimskg_resume.dico_numbers_resume()
-
-    #changé
     scatter1 = fake_news_on_net_scatter.scatter_author_on_net_label()
-
-    # blank = "
-    # bar3 = barchartsSourceVeracite.create_barchart_soureVeracite()
-
-    ##changé
     bar4 = means_ent_kw_barcharts2_Source.create_barchart_nb_means_Source()
     # bar3k = means_ent_kw_barcharts2_Source.create_barchart_nb_means_Source()
     barSV = barchartsSourceVeracite.create_barchart_soureVeracite()
@@ -160,6 +156,15 @@ def themes():
     # return render_template('themes.html', plot1=scatter1, plot2=scatter2, label1 = labeleconomy, labels1 = labelseconomy, data1 = dataeconomy, label2 = labeldev, labels2 = labelsdev, data2 = datadev)
     # return render_template('themes.html', plot1=scatter1, plot2=scatter2 , set=zip(values, labels, colors))
 
+
+@app.route('/bysource')
+def bysource():
+    scatter2 = Evolut_Nbr_Label_Source.create_scatter_labelSource()
+
+    scatter2MOIS = Evolut_Nbr_Label_SourceMois.create_scatter_labelSourceMOIS()
+
+    return render_template('bysource.html', plot2=scatter2[2], plot2MOIS=scatter2MOIS[0], plot3=scatter2[1],
+                           plot3MOIS=scatter2MOIS[1])
 
 if __name__ == '__main__':
     app.run(debug=True)
