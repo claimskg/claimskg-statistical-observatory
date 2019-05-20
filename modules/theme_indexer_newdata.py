@@ -96,10 +96,6 @@ def themes_indexed():
     # df_destack_set['themes'] = str(df_destack_set['themes'])
     print(df_destack_set['themes'])
 
-    # df_destack_set['themes'] = df_destack_set['themes'].str.split(',')
-    # print(df_destack_set['themes'])
-    # todo memo
-    #  .fillna('missing')
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html
     # Note that pandas/NumPy uses the fact that np.nan != np.nan, and treats None like np.nan.
 
