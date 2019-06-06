@@ -1,25 +1,22 @@
 #!/usr/bin/env python
 # import matplotlib.pyplot as plt
 import json
-import plotly
-import plotly.graph_objs as go
-import pandas as pd
 from pathlib import Path
 
+import pandas as pd
+import plotly
+import plotly.graph_objs as go
+
+
 def create_piechart_label():
+    ##########################load df
     # df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
     base_path = Path(__file__).parent
     file_path = (base_path / "df_complete.csv").resolve()
     df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
     # df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
-    # list_auteur = list(df_complete['source'].unique())
-    # print(list_auteur)
-
-    # id_unique =  df_complete.groupby(['source'])['id1'].drop_duplicates().size().reset_index(name='counts')
-    # ids_notna =  df_complete['id1'].notna()
-    # id1s = df_complete[ids_notna]
-    # source_notna = id1s['source'].notna()
+    #########################prepare data
     labels_notna = df_complete['label'].notna()
     labels_ids = df_complete[labels_notna]
 
@@ -28,11 +25,7 @@ def create_piechart_label():
     # print(id_unique)
 
     claim_by_labels_id_unique = id_unique.groupby(['label'])['id1'].size().reset_index(name='counts')
-    # print(claim_by_labels_id_unique)
-    # sum = claim_by_sources_id_unique['counts'].sum()
-    # print(sum)
-    # ok!
-    # print(len(claim_by_labels_id_unique['counts']))
+
     sizes = []
     labels = []
 
@@ -42,14 +35,8 @@ def create_piechart_label():
     # print(sizes)
     # print(labels)
 
-    #####################################figure
-    # def create_piechart_source():
-
+    ###########################graph to json
     colors = ['red','gold', 'grey', 'green']
-
-    # trace = [go.Pie(labels=labels, values=sizes,
-    #                 hoverinfo='label+percent', textinfo='percent',
-    #                 textfont=dict(size=20))]
 
     trace = [go.Pie(labels=labels, values=sizes,
                     hoverinfo='label+percent', textinfo='percent',

@@ -9,14 +9,11 @@
 		<title>ClaimsKG Statistical Observatory</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-{#		<link rel="stylesheet" href="/assets/css/main.css" />#}
         <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet" type="text/css" />
-
-{#		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>#}
         <noscript><link href="{{ url_for('static', filename='assets/css/noscript.css') }}" rel="stylesheet" /></noscript>
+        {#    external libraries calls#}
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-{#        <script src="dst/Chart.Streamgraph.S.js"></script>#}
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -91,7 +88,6 @@
                                 <div class="chart" id="list">
                                     <ul>
                                      {% for string in mylist %}
-{#                                        <h4>{{ blank }}{{ string }}<br></h4>#}
                                         <li><h4>{{ string }}<br></h4></li>
                                      {% endfor %}
                                     </ul>
@@ -108,17 +104,6 @@
                                     </script>
                                 </div>
                             </article>
-{#                            <article class="col-4 col-12-mobile special">#}
-{#                                <header>#}
-{#                                    <h3><a href="#">Global claims metadata</a></h3>#}
-{#                                </header>#}
-{#                                <div class="chart" id="barchart1">#}
-{#                                    <script>#}
-{#                                        var graphs = {{plot3 | safe}};#}
-{#                                        Plotly.plot('barchart1',graphs,{});#}
-{#                                    </script>#}
-{#                                </div>#}
-{#                            </article>#}
                             <article>
 {#                            <article class="col-4 col-12-mobile special">#}
                                 <header>
@@ -171,9 +156,7 @@
 						</header>
 						<div class="row">
 
-
 							<article class="col-4 col-12-mobile special">
-{#								<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>#}
 								<header>
 									<h3><a href="#">Claims per sources rate</a></h3>
 								</header>
@@ -185,7 +168,6 @@
                                 </div>
 							</article>
                             <article class="col-4 col-12-mobile special">
-{#								<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>#}
 								<header>
 									<h3><a href="#">Claim labels per sources</a></h3>
 								</header>
@@ -196,8 +178,6 @@
                                     </script>
                                 </div>
 							</article>
-{#						</div>#}
-{#                        <div class="row">#}
                             <article class="col-4 col-12-mobile special">
                                 <header>
 									<h3><a href="#">claims means of metadata per sources</a></h3>
@@ -209,17 +189,6 @@
                                     </script>
                                 </div>
                             </article>
-{#                            <article class="col-4 col-12-mobile special">#}
-{#                                <header>#}
-{#									<h3><a href="#">claims labels by sources</a></h3>#}
-{#								</header>#}
-{#                                <div class="chart" id="barchartSV">#}
-{#                                    <script>#}
-{#                                        var graphs = {{plotSV | safe}};#}
-{#                                        Plotly.plot('barchartSV',graphs,{});#}
-{#                                    </script>#}
-{#                                </div>#}
-{#                            </article>#}
                         </div>
 					</section>
 				</div>
@@ -237,7 +206,7 @@
 								<!-- Contact -->
                                     <section class="contact">
 										<header>
-											<h3>For more informations about this work and claimsKG</h3>
+											<h3>For more information about this work and ClaimsKG</h3>
 										</header>
 										<p>Feel free to contact us and have a look at the <a href="https://data.gesis.org/claimskg/site">ClaimsKG page.</a></p>
 									</section>
@@ -260,15 +229,7 @@
 		</div>
 
 		<!-- Scripts -->
-{#			<script src="assets/js/jquery.min.js"></script>#}
-{#			<script src="assets/js/jquery.dropotron.min.js"></script>#}
-{#			<script src="assets/js/jquery.scrolly.min.js"></script>#}
-{#			<script src="assets/js/jquery.scrollex.min.js"></script>#}
-{#			<script src="assets/js/browser.min.js"></script>#}
-{#			<script src="assets/js/breakpoints.min.js"></script>#}
-{#			<script src="assets/js/util.js"></script>#}
-{#			<script src="assets/js/main.js"></script>#}
-
+{#    intternal libraries calls#}
             <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
 			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>

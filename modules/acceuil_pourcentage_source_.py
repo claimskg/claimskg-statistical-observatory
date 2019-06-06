@@ -1,3 +1,4 @@
+#useless file to delete
 import rdflib
 
 #Charger tout le ttl

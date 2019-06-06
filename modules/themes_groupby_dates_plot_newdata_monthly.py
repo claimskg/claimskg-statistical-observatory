@@ -1,9 +1,11 @@
 import json
-import csv
+from pathlib import Path
+
 import pandas as pd
 import plotly
 import plotly.graph_objs as go
-from pathlib import Path
+
+
 # from modules import theme_indexer_newdata
 
 def create_scatter_themes_dates_newdata_monthly():
@@ -12,10 +14,8 @@ def create_scatter_themes_dates_newdata_monthly():
     base_path = Path(__file__).parent
     file_path = (base_path / "df_destack_themes_indexed.csv").resolve()
     df_themes_indexed = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    # df_themes_indexed = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_indexed.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
-
-    #creation liste de themes distincts
+    #creation of list of distinct themes
     # print(df_themes_indexed['themes'])
     #
     df_list_themes = df_themes_indexed['themes'].dropna().drop_duplicates()
@@ -62,36 +62,17 @@ def create_scatter_themes_dates_newdata_monthly():
     distinctThemeRefList3.sort()
     # print(distinctThemeRefList3)
 
-# filtre = df_themes_indexed['women'] == 1
-# filtred2 = df_themes_indexed['date2'].notnull()
-# dr = df_themes_indexed[filtre & filtred2] #return datafram with only elements matching theme in parameter
-# dSmall = dr[["id2","date2","women"]] #select only required columns
-# # dSmall = dr[["id2","id1","date1","date2","women"]] #select only required columns
-# print(dSmall)
-# dSmall['date2'] = pd.to_datetime(df_themes_indexed['date2']) #parse datetime
-# # dSmall['date1'] = pd.to_datetime(df_themes_indexed['date1']) #parse datetime
-# print(dSmall['date2'])
-# # print(dSmall['date1'])
-# # filtred2 = dSmall['date2'].notnull
-# df_result = dSmall.groupby(["women", pd.Grouper(key='date2', freq='Y')])['id2'].size().reset_index(name='counts')
-# print(df_result)
-
-    ####### fonctions generation traces pour graphes
+    ####### generation fonctions for traces
 
     def computeTheme(df,theme):
         filtre = df[theme] == 1
         df['date2'] = pd.to_datetime(df['date2']) #parse datetime
         filtred2 = df['date2'].notnull()
+        #### todo replace 2019 by the current datetime to avoid bad entries
         date = pd.to_datetime('2019')
         filtred3 = df['date2'] <= date
         dr = df[filtre & filtred2 & filtred3] # return datafram with only elements matching theme in parameter
-        # dr = df[filtre & filtred2]  # return datafram with only elements matching theme in parameter
-        # dr = df[filtre] #return datafram with only elements matching theme in parameter
         dSmall = dr[["id2","date2",theme]] #select only required columns
-        # print(dSmall['date2'])
-        # dSmall['date2'] = pd.to_datetime(df['date2']) #parse datetime
-        # print(dSmall['date2'])
-        # dSmall['date2'] = pd.to_datetime(df_themes_indexed['date2']) #parse datetime
         return buildTrace(dSmall,theme)
 
 
@@ -113,15 +94,9 @@ def create_scatter_themes_dates_newdata_monthly():
     # titre et retour graphe en json
 
     data = traceList
-    #
-    # # layout = dict(title = "Nombres d'assertions par themes",
-    # #               xaxis = dict(title = 'Années'),
-    # #               yaxis = dict(title = "Nombres d'assertions"),
-    # #               )
-    #
-    # # scatter_themes_JSON = json.dumps(data=data, layout=layout, cls=plotly.utils.PlotlyJSONEncoder)
+
     scatter_themes_newdata_monthly_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-    #
+
     return scatter_themes_newdata_monthly_JSON
 
 # print(create_scatter_themes_dates_newdata_monthly())

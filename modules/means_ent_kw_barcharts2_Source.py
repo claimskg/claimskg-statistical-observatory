@@ -1,37 +1,25 @@
 import json
-import plotly
-import plotly.graph_objs as go
-import pandas as pd
-import numpy as np
-from modules import entites_resume2_Source
-from modules import keywords_resume_Source
-import os
 from pathlib import Path
 
+import numpy as np
+import pandas as pd
+import plotly
+import plotly.graph_objs as go
+
+from modules import entites_resume2_Source
+from modules import keywords_resume_Source
+
+
 def create_barchart_nb_means_Source():
-    # df_complete_total = pd.read_csv('df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
-
-
     base_path = Path(__file__).parent
     file_path = (base_path / "df_complete.csv").resolve()
-    # file_path = (base_path / "../data/test.csv").resolve()
     df_complete_total = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    # print(df_complete_total)
-    # with open(file_path) as f:
-    #     test = [line for line in csv.reader(f)]
-    # df_complete_total = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    # with app.open_resource('schema.sql') as f:
-    #     contents = f.read()
-    #     do_something_with(contents)
-    # rel = os.path.relpath('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv')
-    # print(rel)
-    #filtretoue les source
+
+    #filter sources
     source1=list(set(list(df_complete_total['source'])))
     # print(source1)
 
-    #bcle sur les sources
-    #barchart_nb_means_JSON_Source=[]
-    # data=[]
+    #loop on sources
     labels = []
     values = []
     i = 0
@@ -49,11 +37,6 @@ def create_barchart_nb_means_Source():
     # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
     # print(m_kw_pc)
-
-# if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-
-    # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
-
 
     if not np.isnan(m_ent_pc):
         labels.append('Mean of entities for all claims')
@@ -99,9 +82,6 @@ def create_barchart_nb_means_Source():
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
     # print(m_kw_pc)
 
-    # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-
-    # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
         labels1.append('Mean of entities for all claims')
@@ -119,10 +99,6 @@ def create_barchart_nb_means_Source():
         labels1.append('Mean of keywords for claims with keywords')
         values1.append(m_kw_pc_wk)
 
-    # print(values)
-    # print(labels)
-
-    # colors = ['blue', 'lightskyblue', 'red', 'yellow', 'green', 'black']
     trace1 = go.Bar(
         x=labels1,
         y=values1,
@@ -148,10 +124,6 @@ def create_barchart_nb_means_Source():
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
     # print(m_kw_pc)
 
-    # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-
-    # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
-
     if not np.isnan(m_ent_pc):
         labels2.append('Mean of entities for all claims')
         values2.append(m_ent_pc)
@@ -171,7 +143,6 @@ def create_barchart_nb_means_Source():
     # print(values)
     # print(labels)
 
-    # colors = ['blue', 'lightskyblue', 'red', 'yellow', 'green', 'black']
     trace2 = go.Bar(
         x=labels2,
         y=values2,
@@ -196,10 +167,6 @@ def create_barchart_nb_means_Source():
     # print(m_kw_pc_wk)
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
     # print(m_kw_pc)
-
-    # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-
-    # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
 
     if not np.isnan(m_ent_pc):
         labels3.append('Mean of entities for all claims')
@@ -246,10 +213,6 @@ def create_barchart_nb_means_Source():
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
     # print(m_kw_pc)
 
-    # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-
-    # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
-
     if not np.isnan(m_ent_pc):
         labels4.append('Mean of entities for all claims')
         values4.append(m_ent_pc)
@@ -269,7 +232,6 @@ def create_barchart_nb_means_Source():
     # print(values)
     # print(labels)
 
-    # colors = ['blue', 'lightskyblue', 'red', 'yellow', 'green', 'black']
     trace4 = go.Bar(
         x=labels4,
         y=values4,
@@ -296,10 +258,6 @@ def create_barchart_nb_means_Source():
     m_kw_pc = keywords_resume_Source.moy_keywords_per_claims(df_complete)[1]
     # print(m_kw_pc)
 
-    # if m_ent_pc_we and m_ent_pc and m_kw_pc and m_kw_pc_wk :
-
-    # labels = ['Entities', 'Entities for claims with entities', 'Keywords', 'Keywords for claims with keywords']
-
     if not np.isnan(m_ent_pc):
         labels5.append('Mean of entities for all claims')
         values5.append(m_ent_pc)
@@ -319,15 +277,13 @@ def create_barchart_nb_means_Source():
     # print(values)
     # print(labels)
 
-    # colors = ['blue', 'lightskyblue', 'red', 'yellow', 'green', 'black']
     trace5 = go.Bar(
         x=labels5,
         y=values5,
         name='politifact',
         marker=dict(color=colors[5]))
 
-    # data.append(trace0)
-    # data = [trace0, trace1]
+
     data = [trace0, trace1, trace2, trace3, trace4, trace5]
 
     layout = go.Layout(

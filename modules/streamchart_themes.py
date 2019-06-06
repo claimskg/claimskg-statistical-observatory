@@ -1,10 +1,11 @@
-import numpy as np
-import matplotlib.pyplot as plt
+#useless file to delete
 import pprint
+
+import matplotlib.pyplot as plt
+import numpy as np
 # import plotly.plotly as py
-import plotly
 import plotly.tools as tls
-import json
+
 
 # def create_streamgraph_themes_dates():
 #     def layers(n, m):

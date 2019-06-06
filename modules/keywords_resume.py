@@ -1,8 +1,8 @@
-import json
-import statistics
-import pandas as pd
-from modules import entites_resume2
 from pathlib import Path
+
+import pandas as pd
+
+from modules import entites_resume2
 
 ##########################load df
 # df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
@@ -11,25 +11,19 @@ file_path = (base_path / "df_complete.csv").resolve()
     # file_path = (base_path / "../data/test.csv").resolve()
 df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
 # print(df_complete)
-# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
-########################récup nb de claims total
+########################Get number of total claims creative work
 nb_claims_total = entites_resume2.claims_total()[0]
 
-#########################nb de claims avec mots clés
-
+#########################Number of claims with keywords
 def claim_with_keywords():
-    # ent_unique = df_complete['entity'].unique()
-    # print(ent_unique)
-    # filtre = df_complete['entity'].notnull()
     filtre_k = df_complete['keywords'].notna()
-    # df_filter = df_complete[filter]
     df_filter = df_complete[filtre_k]
     # print(df_filter['entity'])
     nb_cw_with_keywords = len(df_filter['id2'].unique())
     nb_cr_with_keywords = len(df_filter['id1'].unique())
-    # print(nb_cw_with_keywords)#18066
-    # print(nb_cr_with_keywords)#18089
+    # print(nb_cw_with_keywords)
+    # print(nb_cr_with_keywords)
     return nb_cw_with_keywords, nb_cr_with_keywords
 # claim_with_keywords()
 
@@ -55,22 +49,14 @@ def percent_ent_keywords():
         return percent_with2
 # percent_ent_keywords()
 
-##############################moyenne keywords par claims
-##########partie moyenne sur claims avec keywords =notna
-
+############################Mean of keywords per claims
 def moy_keywords_per_claims():
-    #notna
     filtre = df_complete['keywords'].notna()
     df_filtre_k = df_complete[filtre]
     filtre_group_notna = df_filtre_k.groupby(['id1','id2'])['keywords'].size().reset_index(name='counts')
     moy_k = round(filtre_group_notna['counts'].mean(),2)
     # print(moy_k)
-    #####"moy sur toutes les claims:
-    #sum de counts / nb claims total!
     all_k = filtre_group_notna['counts'].sum()
-    # print(all)
-    # ent_unique = df_complete['entity'].unique()
-    # print(len(ent_unique))
     moy_all_k = round(all_k/nb_claims_total,2)
     # print(moy_all_k)
     return moy_k, moy_all_k

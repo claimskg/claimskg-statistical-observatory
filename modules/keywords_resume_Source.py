@@ -1,16 +1,7 @@
-import json
-import statistics
-import pandas as pd
 from modules import entites_resume2_Source
 
 
-##########################load df
-#df_complete = pd.read_csv('/home/hicham/Bureau/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-
-########################récup nb de claims total
-#nb_claims_total = entites_resume2_Source.claims_total(df_complete)
-
-#########################nb de claims avec mots clés
+#########################Number of claims with keywords
 
 def claim_with_keywords(df_complete):
     # ent_unique = df_complete['entity'].unique()
@@ -51,8 +42,7 @@ def percent_ent_keywords(df_complete):
         return percent_with2
 #percent_ent_keywords()
 
-##############################moyenne keywords par claims
-##########partie moyenne sur claims avec keywords =notna
+##############################Mean of keywords per claims
 
 def moy_keywords_per_claims(df_complete):
     nb_claims_total = entites_resume2_Source.claims_total(df_complete)
@@ -63,8 +53,6 @@ def moy_keywords_per_claims(df_complete):
     # filtre_group_notna = df_filtre_k.groupby(['id1','id2'])['keywords'].size().reset_index(name='counts')
     moy_k = round(filtre_group_notna['counts'].mean(),2)
     # print(moy_k)
-    #####"moy sur toutes les claims:
-    #sum de counts / nb claims total!
     all_k = filtre_group_notna['counts'].sum()
     # print(all)
     # ent_unique = df_complete['entity'].unique()

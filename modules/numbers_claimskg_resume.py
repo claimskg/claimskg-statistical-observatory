@@ -1,27 +1,23 @@
 import json
-import statistics
-import pandas as pd
-from modules import entites_resume2
 from pathlib import Path
 
+import pandas as pd
 
-# def list_numbers_resume():
+from modules import entites_resume2
+
 ##########################load df
-# df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 base_path = Path(__file__).parent
 file_path = (base_path / "df_complete.csv").resolve()
 df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-#à reflechir à appeler sur une df, à rajouter comme paramètre aux fonctions
 
-########################récup nb de claims total
+########################Get number of total claims
 nb_cw = entites_resume2.claims_total()[0]
 nb_cr = entites_resume2.claims_total()[1]
 
 
 def total_claim_review():
     nb_cr_total = len(df_complete['id1'].unique())
-    # print(nb_cr_total)#28354
+    # print(nb_cr_total)
     return nb_cr_total
 # total_claim_review()
 
@@ -48,13 +44,6 @@ def get_dates():
 # get_dates()
 
 
-# def percent_date_published():
-
-# dates_cw = len(df_complete['date2'].dropna().unique())
-# print(dates_cw)
-# dates_cr = len(df_complete['date1'].dropna().unique())
-# print(dates_cr)
-
 def claim_with_dates():
     filtre_cw = df_complete['date2'].notna()
     df_filter_cw = df_complete[filtre_cw]
@@ -69,7 +58,6 @@ def claim_with_dates():
 # claim_with_dates()
 
 def percent_claim_with_dates():
-    # cw = claims_total()
     nb_cw_w_dates = claim_with_dates()[0]
     nb_cr_w_dates = claim_with_dates()[1]
     percent_dates_cw = round((nb_cw_w_dates/ nb_cw * 100), 2)

@@ -1,16 +1,19 @@
+# useless file to delete
 from flask import Flask, render_template
-from modules import claim_review_piechart_rating_global2
+
 from modules import claim_piechart_source_percent2
-from modules import means_ent_kw_barcharts2
-from modules import themes_groupby_dates_plot
-from modules import themes_groupby_dates_plot_monthly
-from modules import percent_barcharts_ent_kw_author
-from modules import numbers_claimskg_resume
+from modules import claim_review_piechart_rating_global2
 from modules import fake_news_on_net_scatter
+from modules import means_ent_kw_barcharts2
 # from modules import barchartsSourceVeracite
 from modules import means_ent_kw_barcharts2_Source
+from modules import numbers_claimskg_resume
+from modules import percent_barcharts_ent_kw_author
+from modules import themes_groupby_dates_plot
+from modules import themes_groupby_dates_plot_monthly
 from modules import themes_groupby_dates_plot_streamgraph_hot_period
 from modules import themes_groupby_dates_plot_streamgraph_hot_period_monthly
+
 # from modules import themes_groupby_dates_plot_streamgraph
 
 # from modules import streamchart_themes

@@ -9,10 +9,9 @@
 		<title>Themes - ClaimsKG Statistical Observatory</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-{#		<link rel="stylesheet" href="assets/css/main.css" />#}
-{#		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>#}
         <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet" type="text/css" />
         <noscript><link href="{{ url_for('static', filename='assets/css/noscript.css') }}" rel="stylesheet" /></noscript>
+        {#    external libraries calls#}
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 	</head>
@@ -32,7 +31,6 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-{#								<li><a href="index.html">Accueil</a></li>#}
 								<li><a href="index.html">Home</a></li>
 								<li><a href="themes">By themes</a></li>
 								<li><a href="right-sidebar.html">By entities</a></li>
@@ -54,11 +52,6 @@
                                         Explore claims around sources
                                     </p>
                                 </header>
-    {#							<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>#}
-    {#							<p>#}
-
-    {#							</p>#}
-    						
                             <section>
     {#                                <div class="chart" id="scatter2">#}
                                     <header>
@@ -69,8 +62,6 @@
                                                 var graphs = {{plot2 | safe}};
                                                 Plotly.plot('scatter2',graphs,{});
                                             </script>
-{#								<p>#}
-{#								</p>#}
                                         </div>
 							</section>
                             <section>
@@ -83,8 +74,6 @@
                                                 var graphs = {{plot2MOIS | safe}};
                                                 Plotly.plot('scatter2MOIS',graphs,{});
                                             </script>
-{#								<p>#}
-{#								</p>#}
                                         </div>
 							</section>
 							<section>
@@ -95,8 +84,6 @@
                                                 var graphs = {{plot3 | safe}};
                                                 Plotly.plot('scatter3',graphs,{});
                                             </script>
-{#								<p>#}
-{#								</p>#}
                                         </div>
 							</section>
                             <section>
@@ -107,25 +94,8 @@
                                                 var graphs = {{plot3MOIS| safe}};
                                                 Plotly.plot('scatter3MOIS',graphs,{});
                                             </script>
-{#								<p>#}
-{#								</p>#}
                                         </div>
 							</section>
-							<!--
-							<section>
-    {#                                <div class="chart" id="scatter4">#}
-                                    <header>
-                                        <h3>Number of label by Source snopes </h3>
-                                    </header>
-                                        <div class="chart" id="scatter4">
-                                            <script>
-{#                                                var graphs = {{plot4 | safe}};#}
-                                                Plotly.plot('scatter4',graphs,{});
-                                            </script>
-{#								<p>#}
-{#								</p>#}
-                                        </div>
-							</section>-->
 						</article>
 						<hr />
 						<div class="row">
@@ -147,7 +117,7 @@
 								<!-- Contact -->
 									 <section class="contact">
                                         <header>
-                                            <h3>For more information about this work and claimsKG</h3>
+                                            <h3>For more information about this work and ClaimsKG</h3>
                                         </header>
                                         <p>Feel free to contact us and have a look at the <a href="https://data.gesis.org/claimskg/site">ClaimsKG page.</a></p>
                                     </section>
@@ -170,15 +140,7 @@
 		</div>
 
 		<!-- Scripts -->
-{#			<script src="assets/js/jquery.min.js"></script>#}
-{#			<script src="assets/js/jquery.dropotron.min.js"></script>#}
-{#			<script src="assets/js/jquery.scrolly.min.js"></script>#}
-{#			<script src="assets/js/jquery.scrollex.min.js"></script>#}
-{#			<script src="assets/js/browser.min.js"></script>#}
-{#			<script src="assets/js/breakpoints.min.js"></script>#}
-{#			<script src="assets/js/util.js"></script>#}
-{#			<script src="assets/js/main.js"></script>#}
-
+{#    intternal libraries calls#}
             <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
 			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>

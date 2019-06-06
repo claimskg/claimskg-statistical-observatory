@@ -1,8 +1,9 @@
-import SPARQLWrapper
-from SPARQLWrapper import SPARQLWrapper, JSON
-import pandas as pd
-import json
 import csv
+import json
+
+import SPARQLWrapper
+import pandas as pd
+from SPARQLWrapper import SPARQLWrapper, JSON
 
 pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
@@ -105,7 +106,6 @@ def generate_per_label_dataframe():
         return pd.DataFrame(out, columns=cols)
 
     ##################### construct dataframes
-    # df_id = get_sparql_dataframe(endpoint, quid)
 
     df_Source_labelTRUE = get_sparql_dataframe(endpoint,labelTRUE)
     df_Source_labelFALSE = get_sparql_dataframe(endpoint,labelFALSE)
