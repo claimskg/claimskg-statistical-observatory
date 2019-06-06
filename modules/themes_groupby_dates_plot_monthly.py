@@ -1,8 +1,10 @@
+#useless file to delete
 import json
-import csv
+
 import pandas as pd
 import plotly
 import plotly.graph_objs as go
+
 
 def create_scatter_themes_dates_month():
     #pd.read csv

@@ -1,8 +1,12 @@
+#useless file to delete
 import json
+
 import plotly
 import plotly.graph_objs as go
+
 from modules import entites_resume
 from modules import nbsresume
+
 
 def create_barchart_nb_means_global():
     m_ent_pc_wc = entites_resume.moy_ent()[0]

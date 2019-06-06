@@ -1,8 +1,11 @@
 import json
+
 import plotly
 import plotly.graph_objs as go
+
 from modules import entites_resume2
 from modules import keywords_resume
+
 
 def create_barchart_nb_means_global():
     m_ent_pc_we = entites_resume2.moy_ent_per_claims()[0]
@@ -21,10 +24,7 @@ def create_barchart_nb_means_global():
 
     colors = ['blue', 'lightskyblue']
 
-    # trace = [go.Bar(labels=labels, values=values,
-    #                 hoverinfo='label+percent', textinfo='percent',
-    #                 textfont=dict(size=20),
-    #                 marker=dict(colors=colors))]
+
     trace0 = go.Bar(
             x=[labels[0],labels[2]],
             y=[values[0],values[2]],

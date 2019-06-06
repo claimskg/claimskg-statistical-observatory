@@ -1,10 +1,6 @@
-import json
-import csv
-import pandas as pd
-import plotly
-import plotly.graph_objs as go
-from datetime import datetime
 from pathlib import Path
+
+import pandas as pd
 
 pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
@@ -14,14 +10,9 @@ pd.set_option('display.max_columns', None)
 base_path = Path(__file__).parent
 file_path = (base_path / "df_destack_themes_indexed.csv").resolve()
 df_themes_indexed = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-print(df_themes_indexed)
-# df_themes_indexed = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_indexed.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
+# print(df_themes_indexed)
 
-
-# def create_scatter_themes_dates():
 def create_distinctThemeRefList3():
-    # print(df_themes_indexed['themes'])
-    #
     df_list_themes = df_themes_indexed['themes'].dropna().drop_duplicates()
     # print(df_list_themes)
     # #
@@ -68,7 +59,7 @@ def create_distinctThemeRefList3():
     return distinctThemeRefList3
 create_distinctThemeRefList3()
 
-    ######## fonctions generation traces pour graphes
+    ######## generation fonctions for traces
 
 class StreamGraphData:
     def __init__(self, name, y):
@@ -86,12 +77,6 @@ def add0(label):
 # return StreamGraphData
 
 def getSteamGraphData(theme, df, labels):
-    # filtre = df[theme] == 1
-    # dr = df[filtre]  # return datafram with only elements matching theme in parameter
-    # # print(dr)
-    # dSmall = dr[["id1", "date_cr_t", theme]]  # select only required columns
-    # # print(dSmall)
-    # dSmall['date_cr_t'] = pd.to_datetime(dSmall['date_cr_t'])  # parse datetime
 
     filtre = df[theme] == 1
     df['date2'] = pd.to_datetime(df['date2'])  # parse datetime
@@ -99,15 +84,10 @@ def getSteamGraphData(theme, df, labels):
     date = pd.to_datetime('2019')
     filtred3 = df['date2'] <= date
     dr = df[filtre & filtred2 & filtred3]  # return datafram with only elements matching theme in parameter
-    # dr = df[filtre] #return datafram with only elements matching theme in parameter
     dSmall = dr[["id2", "date2", theme]]  # select only required columns
-
-    # df_result = dr.groupby([theme, pd.Grouper(key='date2', freq='Y')])['id2'].size().reset_index(name='counts')
 
     df_result = dSmall.groupby([theme, pd.Grouper(key='date2', freq='Y')])['id2'].size().reset_index(name='counts')
     # print(df_result)
-    # dates = df_result['date_cr_t']
-    # dates = dates.dt.strftime('%Y')
     df_result['date2'] = pd.to_datetime(df_result['date2'])
     df_result['year'] = df_result['date2'].dt.strftime('%Y')
 
@@ -168,6 +148,3 @@ def getSteamGraphData(theme, df, labels):
 def getAllSteamGraphData(labelList):
     return list(map(lambda th: getSteamGraphData(th, df_themes_indexed, labelList), create_distinctThemeRefList3()))
 
-    # je retourne des arrays que je récup bruts dans l'app avec les bons noms et je boucle dessus avec le jinja
-
-    # à récup : name, y = [values], et en x un label qui seront les dates attention string je pense

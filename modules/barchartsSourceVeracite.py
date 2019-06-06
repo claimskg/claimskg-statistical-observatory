@@ -1,8 +1,8 @@
 import json
-import plotly
-import plotly.graph_objs as go
 
 import pandas as pd
+import plotly
+import plotly.graph_objs as go
 
 
 def create_barchart_soureVeracite():
@@ -10,7 +10,7 @@ def create_barchart_soureVeracite():
     pd.set_option('display.max_colwidth', -1)
     pd.set_option('display.max_columns', None)
 
-        ##########################load df
+    ##########################load df
     df_Source_labelTRUE = pd.read_csv('modules/df_Source_labelTRUE.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
     df_Source_labelFALSE = pd.read_csv('modules/df_Source_labelFALSE.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
     df_Source_labelOTHER = pd.read_csv('modules/df_Source_labelOTHER.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
@@ -29,24 +29,11 @@ def create_barchart_soureVeracite():
         D = list(df_Source_labelMIXTURE['source']).count(auteur)
         dic[auteur]=[A,B,C,D]
 
-    #A=list(df_Source_labelTRUE['source']).count('politifact')
-    #B=list(df_Source_labelFALSE['source']).count('politifact')
-    #C=list(df_Source_labelOTHER['source']).count('politifact')
-    #D=list(df_Source_labelMIXTURE['source']).count('politifact')
-    #valuesT = []
-    #valuesT.append(A)
-    #valuesT.append(B)
-    #valuesT.append(C)
-   # valuesT.append(D)
-
     labels = ['TRUE', 'FALSE', 'OTHER', 'MIXTURE']
 
     colors = ['blue', 'lightskyblue','red','yellow','green','black']
 
-        # trace = [go.Bar(labels=labels, values=values,
-        #                 hoverinfo='label+percent', textinfo='percent',
-        #                 textfont=dict(size=20),
-        #                 marker=dict(colors=colors))]
+
     data=[]
     i=0
     for key in dic.keys():
@@ -58,15 +45,6 @@ def create_barchart_soureVeracite():
         data.append(trace0)
         i=i+1
 
-
-    #trace1 = go.Bar(
-          #   x=labels,
-          #   y=valuesT,
-            # name='Claims with corresponding item',
-            # marker=dict(color=colors[1]))
-
-
-    #data = [trace0, trace1]
 
     layout = go.Layout(
             title='Means of item by claims',

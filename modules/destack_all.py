@@ -1,11 +1,11 @@
-import re
-import pandas as pd
 import csv
-# from modules import liste_themes2
-from modules import add_themes_df2_keywords
 from pathlib import Path
 
-# def explode_keywords():
+import pandas as pd
+
+# from modules import liste_themes2
+from modules import add_themes_df2_keywords
+
 dico_themes = add_themes_df2_keywords.get_rid_doubles()
 
 def explode_keywords():
@@ -14,8 +14,7 @@ def explode_keywords():
     base_path = Path(__file__).parent
     file_path = (base_path / "df_complete.csv").resolve()
     df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    # df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    # print(df_complete['keywords'])
+   # print(df_complete['keywords'])
 
     df_complete['keywords'] = df_complete['keywords'].str.split(',')
 

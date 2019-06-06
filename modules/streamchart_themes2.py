@@ -1,11 +1,6 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import pprint
+#useless file to delete
 # import plotly.plotly as py
 import pandas as pd
-import plotly
-import plotly.tools as tls
-import json
 
 # def create_streamgraph_themes_dates2():
 #pd.read csv

@@ -9,22 +9,15 @@
     <title>Themes - ClaimsKG Statistical Observatory</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    {#		<link rel="stylesheet" href="assets/css/main.css" />#}
-    {#		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>#}
     <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet" type="text/css"/>
     <noscript>
         <link href="{{ url_for('static', filename='assets/css/noscript.css') }}" rel="stylesheet"/>
     </noscript>
+{#    external libraries calls#}
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    {#    internal libraries calls#}
     <script type="text/javascript" src="{{ url_for('static', filename='assets/js/Chart.Streamgraph.S.js') }}"></script>
-    {#        <script src="dst/Chart.Streamgraph.S.js"></script>#}
-    {#        <script src="https://cdnjs.com/libraries/Chart.js"></script>#}
-    {#        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>#}
-    {#        <script src="Chart.js"></script>#}
-
-    {#        <script src="dst/Chart.Streamgraph.js"></script>#}
-    {#        <script src="static/Chart.min.js"></script>#}
 </head>
 <body class="no-sidebar is-preload">
 <div id="page-wrapper">
@@ -82,8 +75,6 @@
                             var graphs = {{plot2 | safe}};
                             Plotly.plot('scatter2', graphs, {});
                         </script>
-                        {#								<p>#}
-                        {#								</p>#}
                     </div>
                 </section>
                 <section>
@@ -92,7 +83,6 @@
                     </header>
                     <div class="chart">
                         <!-- bar chart canvas element -->
-{#                        <canvas id="streamgraph"></canvas>#}
                         <canvas id="streamgraph" width="900" height="450"></canvas>
                         {#                                    <canvas id="myChart" width="600" height="400"></canvas>#}
                     </div>
@@ -140,7 +130,6 @@
                             colors: ["rgba(102, 51, 153, 1)","rgba(135, 211, 124, 1)"]
                             {#colors: ["rgba(148, 124, 176, 1)","rgba(145, 61, 136, 1)"]#}
                             {#colors: ["rgba(148, 124, 176, 1)","rgba(115, 101, 152, 1)","rgba(142, 68, 173, 1)","rgba(102, 51, 153, 1)","rgba(145, 61, 136, 1)"]#}
-                            {#a test une seule couleur#}
                         };
                         var mychart = document.getElementById("streamgraph").getContext("2d");
                         steps = 10
@@ -260,16 +249,7 @@
 </div>
 
 <!-- Scripts -->
-{#			<script src="assets/js/jquery.min.js"></script>#}
-{#			<script src="assets/js/jquery.dropotron.min.js"></script>#}
-{#			<script src="assets/js/jquery.scrolly.min.js"></script>#}
-{#			<script src="assets/js/jquery.scrollex.min.js"></script>#}
-{#			<script src="assets/js/browser.min.js"></script>#}
-{#			<script src="assets/js/breakpoints.min.js"></script>#}
-{#			<script src="assets/js/util.js"></script>#}
-{#			<script src="assets/js/main.js"></script>#}
-{#           <script src="dst/Chart.Streamgraph.S.js"></script>#}
-
+{#    intternal libraries calls#}
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
@@ -278,7 +258,6 @@
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
-{#			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/Chart.Streamgraph.S.js') }}"></script>#}
 
 
 </body>

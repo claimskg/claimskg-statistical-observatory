@@ -1,12 +1,8 @@
 import csv
-import pandas as pd
 from pathlib import Path
-from modules import drop_doubles_col_themes_destack
 
+import pandas as pd
 
-#generate df_destack_themes_v2_set.csv
-# generation = drop_doubles_col_themes_destack.set_destack_themes()
-# print(generation)
 
 def themes_indexed():
     ###load df
@@ -15,23 +11,10 @@ def themes_indexed():
     file_path = (base_path / "df_destack_themes_v2_set.csv").resolve()
     df_destack_set = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
-    # df_destack_set = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_v2_set.csv', dtype={"id1": str, "id2": str, "entity": str, "themes":str}, header=0)
-    # df_destack_set = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_destack_themes_v2_set.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-
-    ####load distinct theme ref list
-    # creation liste de themes distincts
-    # print(df_destack_set['themes'])
-    # df_destack_set['themes'] = df_destack_set['themes'].str.split(',')
     print(df_destack_set['themes'])
 
-    # df_list_themes = df_destack_set['themes'].dropna().drop_duplicates().values.tolist()
-    #
-    # def distinct_themes_list():
     df_list_themes = df_destack_set['themes'].dropna().drop_duplicates()
-    #
-    # # df_list_themes = str(df_destack_set['themes'].dropna().values.tolist())
-    # print(df_list_themes)
-    #
+
     listr = []
     for row in df_list_themes:
         # print(row)
@@ -86,15 +69,10 @@ def themes_indexed():
 
     df_destack_set['themes'] = df_destack_set.apply(lambda row: col_destack_to_list(row), axis=1)
 
-    # df_destack_set['themes'] = df_destack_set['themes'].str.split(',')
+    # print(isinstance(df_destack_set['themes'][23],(list,)))
+    # print(isinstance(df_destack_set['themes'][23],(str,)))
+    # print(df_destack_set['themes'][23])
     # print(df_destack_set['themes'])
-    print(isinstance(df_destack_set['themes'][23],(list,)))
-    print(isinstance(df_destack_set['themes'][23],(str,)))
-    print(df_destack_set['themes'][23])
-    # p = list(df_destack_set['themes'][23])
-    # print(p)
-    # df_destack_set['themes'] = str(df_destack_set['themes'])
-    print(df_destack_set['themes'])
 
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html
     # Note that pandas/NumPy uses the fact that np.nan != np.nan, and treats None like np.nan.
@@ -102,11 +80,11 @@ def themes_indexed():
     def list_indexer_themes(row_internal, liste_refs):
         # get theme_list from row
         col_list = row_internal['themes']
-        # construction du vecteur vide a la bonne taille
+        # construction of empty vector at accurate size
         sparse_vector = [0] * len(liste_refs)
         # cas nominal : liste de string
         if isinstance(col_list,(list,)):
-            #  on met a 1 les theme qui existe dans le vecteur
+            #  Setting to one the existing themes
             for theme in col_list:
                 index =  liste_refs.index(theme)
                 sparse_vector[index]=1
@@ -114,10 +92,7 @@ def themes_indexed():
             return sparse_vector
         else:
             return sparse_vector
-        # else:
-        #     index = liste_refs.index(col_list)
-        #     sparse_vector[index]=1
-        #     return sparse_vector
+
 
     df_destack_set['themesIndexed'] = df_destack_set.apply(lambda row: list_indexer_themes(row, distinctThemeRefList3), axis=1)
     print(df_destack_set['themesIndexed'])

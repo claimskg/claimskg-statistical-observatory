@@ -1,9 +1,5 @@
-import json
-import csv
+#old file to plot since 2016 by year
 import pandas as pd
-import plotly
-import plotly.graph_objs as go
-from datetime import datetime
 
 df_themes_dates_cr_cw = pd.read_csv(
     '/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_themes_list_dates_cr_cw.csv', header=0)

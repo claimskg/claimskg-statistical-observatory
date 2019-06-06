@@ -1,6 +1,5 @@
+#useless file to delete
 import re
-import numpy
-from numpy import asarray, array
 import statistics
 
 # template du nécessaire pour mots clés

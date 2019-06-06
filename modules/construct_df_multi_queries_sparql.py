@@ -1,8 +1,9 @@
-import SPARQLWrapper
-from SPARQLWrapper import SPARQLWrapper, JSON
-import pandas as pd
-import json
 import csv
+import json
+
+import SPARQLWrapper
+import pandas as pd
+from SPARQLWrapper import SPARQLWrapper, JSON
 
 pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
@@ -180,8 +181,8 @@ def generate_global_dataframe():
     # print(df_dates_cw.head())
     # print(df_sources.head())
 
-    ################### merge en une seule df
-    # concatenation to gather entities 1 and 2
+    ################### merge in one df
+    # concatenation to gather entities 1 from claim review and 2 from creative work
     df_entities_complete = pd.concat([df_entities, df_entities2]).drop_duplicates().reset_index(drop=True)
     # print(df_entities_complete.head())
 

@@ -1,25 +1,16 @@
-import pandas as pd
-#import plotly
-#import plotly.graph_objs as go
 import json
-import csv
 
-
+import pandas as pd
 import plotly
-from plotly.graph_objs import Bar, Scatter, Figure, Layout
-import plotly.plotly as py
 import plotly.graph_objs as go
+
 
 #df_complete_total = pd.read_csv('modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
 def create_scatter_labelSource():
     df_complete_total = pd.read_csv('modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    #df_plolitifact['label'].value_counts()
-    # df1=pd.read_csv('modules/df_complete.csv', header=0)
-    # df1=pd.read_csv('modules/df_complete.csv',dtype={"id1": str, "id2": str, "entity": str}, header=0)
     df_complete = df_complete_total[['id1', 'id2', 'source', 'date2', 'label']]
-    # df_complete=df_complete.dropna()
     sourceSdOUBLON = list(set(list(df_complete['source'])))
-    print(sourceSdOUBLON)
+    # print(sourceSdOUBLON)
     sourceSdOUBLON =['factscan','politifact','snopes']
     scatter_labelSource_JSON=[]
     for source1 in sourceSdOUBLON:
@@ -31,22 +22,22 @@ def create_scatter_labelSource():
             df_result = df_plolitifact.groupby(['label', pd.Grouper(key='date2', freq='Y')])['id1'].size().reset_index(name='counts')
 
             trace4 = go.Scatter(
-                x =  df_result[df_result['label']=='TRUE']['date2'], #d findex,
+                x =  df_result[df_result['label']=='TRUE']['date2'], #dfindex,
                 y = df_result[df_result['label']=='TRUE']['counts'],#df,
                 name='TRUE',
                 mode='lines+markers')
             trace3 = go.Scatter(
-                x=df_result[df_result['label'] == 'FALSE']['date2'],  # d findex,
+                x=df_result[df_result['label'] == 'FALSE']['date2'],  # dfindex,
                 y=df_result[df_result['label'] == 'FALSE']['counts'],  # df,
                 name='FALSE',
                 mode='lines+markers')
             trace2= go.Scatter(
-                x=df_result[df_result['label'] == 'OTHER']['date2'],  # d findex,
+                x=df_result[df_result['label'] == 'OTHER']['date2'],  # dfindex,
                 y=df_result[df_result['label'] == 'OTHER']['counts'],  # df,
                 name='OTHER',
                 mode='lines+markers')
             trace1= go.Scatter(
-                x=df_result[df_result['label'] == 'MIXTURE']['date2'],  # d findex,
+                x=df_result[df_result['label'] == 'MIXTURE']['date2'],  # dfindex,
                 y=df_result[df_result['label'] == 'MIXTURE']['counts'],  # df,
                 name='MIXTURE',
                 mode='lines+markers')

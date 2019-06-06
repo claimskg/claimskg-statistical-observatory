@@ -1,7 +1,9 @@
-import pandas as pd
-from modules import liste_themes2
-from copy import deepcopy
 from pathlib import Path
+
+import pandas as pd
+
+from modules import liste_themes2
+
 
 def get_newdata_dico_themes():
     dico_themes = liste_themes2.dico_themes()
@@ -11,9 +13,8 @@ def get_newdata_dico_themes():
     base_path = Path(__file__).parent
     file_path = (base_path / "df_complete.csv").resolve()
     df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-    # df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
-    #prepare list1
+    #prepare list of distinct themes
     df_complete['keywords'] = df_complete['keywords'].str.split(',')
 
     df_list_themes = df_complete['keywords'].dropna().values.tolist()
@@ -32,13 +33,13 @@ def get_newdata_dico_themes():
         distinctThemeRefList_strip.append(new_i)
     # print(distinctThemeRefList_strip)
 
-    #que ça
+    #Only strict matches
     statistics = ['rate', 'rates']
     economy = ['aid']
     environment1 = ['sea']
     health = ['care', 'hiv']
     data = ['data']
-    #que après
+    #Only after
     middle_east = ['oman', 'iran']
     # environment2 = ['sea']
     law = ['law']

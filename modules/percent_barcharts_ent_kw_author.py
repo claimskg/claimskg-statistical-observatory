@@ -1,13 +1,15 @@
 import json
+
 import plotly
 import plotly.graph_objs as go
+
+from modules import author_resume
 from modules import entites_resume2
 from modules import keywords_resume
-from modules import author_resume
 from modules import numbers_claimskg_resume
 
 
-##pourcentage à récup = entities, keywords, author
+##Get percent coverage of metadata
 def create_barchart_percent_global():
     #avec auteur
     percent_with_author = author_resume.percent_claim_with_author()
@@ -49,29 +51,12 @@ def create_barchart_percent_global():
     values.append(percent_with_4)
 
     colors = ['blue', 'gold']
-    # colors = ['blue']
 
     trace0 = go.Bar(
         x=labels,
-        # y=values,
-        # x=[labels[0],labels[1], labels[3]],
         y=[values[0],values[1],values[3],values[6],values[4],values[5],values[8]],
         name='Percent of claims',
         marker=dict(color=colors[0]))
-
-    # x = [labels[1], labels[3]],
-    # y = [values[1], values[3]],
-
-    # trace = [go.Bar(labels=labels, values=values,
-    #                 hoverinfo='label+percent', textinfo='percent',
-    #                 textfont=dict(size=20),
-    #                 marker=dict(colors=colors))]
-    # trace0 = go.Bar(
-    #         x=[labels[0],labels[2]],
-    #         y=[values[0],values[2]],
-    #         name='All claims',
-    #         marker=dict(color=colors[0]))
-
 
     trace1 = go.Bar(
             x=[labels[1],labels[3]],
@@ -79,14 +64,7 @@ def create_barchart_percent_global():
             name='Percent of claims reviews',
             marker=dict(color=colors[1]))
 
-
-    # data = [trace0, trace1]
     data = [trace0, trace1]
-
-    # layout = go.Layout(
-    #     title='Means of item by claims',
-    #     barmode='group'
-    # )
 
     barchart_percent_global_JSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
 
