@@ -6,7 +6,6 @@ import pandas as pd
 
 from modules import add_themes_df2_keywords
 
-# import joinCsventkw
 pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
 

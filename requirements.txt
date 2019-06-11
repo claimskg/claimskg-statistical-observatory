@@ -1,0 +1,7 @@
+Flask==1.0.2
+plotly==3.7.1
+matplotlib==3.0.3
+rdflib==4.2.2
+numpy==1.16.2
+pandas==0.24.2
+SPARQLWrapper==1.8.4
