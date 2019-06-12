@@ -296,4 +296,4 @@ def create_barchart_nb_means_Source():
 
     # print(piechart_labels_JSON)
     return barchart_nb_means_JSON_Source
-create_barchart_nb_means_Source()
+# create_barchart_nb_means_Source()

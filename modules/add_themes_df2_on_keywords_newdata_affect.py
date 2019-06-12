@@ -1,10 +1,10 @@
-import re
+#useless file to delete
+from pathlib import Path
+
 import pandas as pd
-import csv
+
 # from modules import liste_themes2
 from modules import add_themes_df2_keywords
-# import joinCsventkw
-from pathlib import Path
 
 dico_themes = add_themes_df2_keywords.get_rid_doubles()
 
@@ -13,8 +13,6 @@ dico_themes = add_themes_df2_keywords.get_rid_doubles()
 base_path = Path(__file__).parent
 file_path = (base_path / "df_complete.csv").resolve()
 df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
-# df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
-# df_ent_kw = joinCsventkw.df_ent_kw()
 
 df_complete['themes']='NA'
 print(df_complete.head())
@@ -128,6 +126,4 @@ print("stqrt")
 # df_complete.to_csv('df_complete_themes_newdata_on_keywords.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
 
 
-# print(df_ent_kw.head())
-# print(testapply.head())
 print("end")
