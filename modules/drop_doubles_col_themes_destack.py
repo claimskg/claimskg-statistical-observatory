@@ -31,5 +31,5 @@ def set_destack_themes():
     print(df_destack['themes'])
     # print(df_destack)
     #
-    df_destack.to_csv('df_destack_themes_v2_set.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    df_destack.to_csv('modules/df_destack_themes_v2_set.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
     return 'ok df themes v2 set'
