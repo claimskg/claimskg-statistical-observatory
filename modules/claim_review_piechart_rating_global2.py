@@ -13,6 +13,7 @@ def create_piechart_label():
     # df_complete = pd.read_csv('df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
     base_path = Path(__file__).parent
     file_path = (base_path / "df_complete.csv").resolve()
+    # print(file_path)
     df_complete = pd.read_csv(file_path, dtype={"id1": str, "id2": str, "entity": str}, header=0)
     # df_complete = pd.read_csv('/home/dadou/PycharmProjects/FactCheckStat+back/modules/df_complete.csv', dtype={"id1": str, "id2": str, "entity": str}, header=0)
 
@@ -47,4 +48,4 @@ def create_piechart_label():
 
     # print(piechart_sources_JSON)
     return piechart_labels_JSON
-create_piechart_label()
+# create_piechart_label()
