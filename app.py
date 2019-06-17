@@ -19,7 +19,7 @@ from modules import themes_groupby_dates_plot_newdata_monthly
 from modules import themes_groupby_dates_plot_streamgraph_newdata
 from modules import themes_groupby_dates_plot_streamgraph_newdata_monthly
 
-app = Flask(__name__)
+app = Flask("claimskg-statistical-observatory")
 
 @app.route('/dataframe_generation')
 def generate_global_dataframe():
@@ -129,7 +129,7 @@ def bysource():
                            plot3MOIS=scatter2MOIS[1])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port='8080')
 
 
 
