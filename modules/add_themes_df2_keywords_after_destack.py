@@ -62,6 +62,7 @@ def destack_themes_from_exploded():
 
     df_destack['themes'] = df_destack.apply(lambda row: searchFunction(row,dico_themes),axis=1)
     print(df_destack['themes'])
-    df_destack.to_csv('modules/df_destack_themes_v1.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    df_destack.to_csv(base_path/'df_destack_themes_v1.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    # df_destack.to_csv('modules/df_destack_themes_v1.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
     return 'ok df destack themes v1'
 

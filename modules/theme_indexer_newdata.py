@@ -100,5 +100,7 @@ def themes_indexed():
     df_destack_set[distinctThemeRefList3] = pd.DataFrame(df_destack_set.themesIndexed.values.tolist(), index= df_destack_set.index)
     #
     # #df to csv
-    df_destack_set.to_csv('modules/df_destack_themes_indexed.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    df_destack_set.to_csv(base_path/'df_destack_themes_indexed.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    # df_destack_set.to_csv('modules/df_destack_themes_indexed.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
     return 'ok df themes indexed'
+# themes_indexed()

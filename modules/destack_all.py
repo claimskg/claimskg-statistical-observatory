@@ -37,7 +37,8 @@ def explode_keywords():
 
     #df to csv
     # res.to_csv('df_keywords_exploded2.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
-    res.to_csv('modules/df_keywords_exploded.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    res.to_csv(base_path/'df_keywords_exploded.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
+    # res.to_csv('modules/df_keywords_exploded.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
     return 'ok df exploded'
 # explode_keywords()
 
