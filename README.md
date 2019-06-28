@@ -40,3 +40,18 @@ pipreqs /path/to/project
 
 ## License
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+## Docker Deployment
+
+A docker version is provided for convenience. 
+
+To build use `docker build . -t claimskg-statistical-observatory`
+
+To run use `docker run -p HOSTPORT:8080 claimskg-statistical-observatory`. Replace host port by the actual port you want to bind locally on the server. 
+
+The route prefix is set at the beginning of app.py in the prefix variable. If you wish to change the prefix you will need to change it there. The default prefix is `/claimskg/observatory`.
+
+The current version only deploys a *DEMO* server running directly with flask as opposed to using a WSGI application server, possible security risks. 
+
+After running the container, please sent the appropriate GET requests as outlined in the "How to run" section above. 
+
