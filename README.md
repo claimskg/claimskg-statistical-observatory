@@ -14,18 +14,14 @@ The application is the app.py file and you can run it with:
 ```python
 flask run
 ```
-By default in development mode it will run on [http://127.0.0.1:5000/](https://github.com/user/repo/blob/branch/other_file.md)
+By default in development mode it will run on [http://localhost:8080/](http://localhost:8080/dataframe_generation)
 
-At first run or in case of updates in the ClaimsKG graph, you must generate the dataframes csv files which are used as data source to feed the application .
+At first run or in case of updates in the ClaimsKG graph, you must generate the dataframes csv files which are used as data source to feed the application with simple GET requests on the following URIs:
 
-Three specific routes which consists in http calls, are dedicated to csv generation.
+For the main dataframe use [http://localhost:8080/dataframe_generation](http://localhost:8080/dataframe_generation).
+For the per label dataframe use [http://localhost:8080/dataframe_per_label_generation](http://localhost:8080/dataframe_per_label_generation).
+For the theme part use [http://localhost:8080/generation_csv_themes](http://localhost:8080/generation_csv_themes). Please note that this last query may take up to 2-3 hours.  
 
-For the main dataframe use [http://127.0.0.1:5000/dataframe_generation](http://127.0.0.1:5000/dataframe_generation).
-For the per label dataframe use [http://127.0.0.1:5000/dataframe_per_label_generation](http://127.0.0.1:5000/dataframe_per_label_generation).
-For the theme part use [http://127.0.0.1:5000/generation_csv_themes](http://127.0.0.1:5000/generation_csv_themes). Please note that the generation may take a certain time, particularly the theme part which could take a couple of hours.  
-
-In addition, if you wish use it in development mode locally please consider make a virtual environment with python to avoid python language and libraries compatibility issues.
- 
 ## Requirements
 The version of Python is 3.6.
 
@@ -38,7 +34,7 @@ The requirements file has been generated with the pipreqs command:
 
 ```bash
 pipreqs /path/to/project
-```  
+```
 
 
 
