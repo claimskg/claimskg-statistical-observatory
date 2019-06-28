@@ -19,23 +19,25 @@ from modules import themes_groupby_dates_plot_newdata_monthly
 from modules import themes_groupby_dates_plot_streamgraph_newdata
 from modules import themes_groupby_dates_plot_streamgraph_newdata_monthly
 
+prefix = "/claimskg/observatory"
+
 app = Flask("claimskg-statistical-observatory")
 
-@app.route('/dataframe_generation')
+@app.route(prefix+'/dataframe_generation')
 def generate_global_dataframe():
     print("start global df generation")
     generation_df = construct_df_multi_queries_sparql.generate_global_dataframe()
     print(generation_df)
     return '''{"action":"generate_dataframe", "status":"complete"}'''
 
-@app.route('/dataframe_per_label_generation')
+@app.route(prefix+'/dataframe_per_label_generation')
 def generate_labels_dataframe():
     print("start per label df generation")
     generation_pl = Data_Source_Veracite.generate_per_label_dataframe()
     print(generation_pl)
     return '''{"action":"generate_labels", "status":"complete"}'''
 
-@app.route('/generation_csv_themes')
+@app.route(prefix+'/generation_csv_themes')
 def generate_themes():
     print("start gen 1")
     g1 = destack_all.explode_keywords()
@@ -54,11 +56,11 @@ def generate_themes():
     print(g4)
     return '''{"action":"generate_theme", "status":"complete"}'''
 
-@app.route('/')
+@app.route(prefix+'/')
 def base():
     return acceuil()
 
-@app.route('/index.html')
+@app.route(prefix+'/index.html')
 def index():
     return acceuil()
 def acceuil() :
@@ -74,7 +76,7 @@ def acceuil() :
                            mylist=list_resume, plot7=bar4, plotSV= barSV)
 
 
-@app.route('/themes')
+@app.route(prefix+'/themes')
 def themes():
     scatter1 = themes_groupby_dates_plot_newdata.create_scatter_themes_dates_newdata()
     scatter2 = themes_groupby_dates_plot_newdata_monthly.create_scatter_themes_dates_newdata_monthly()
@@ -119,7 +121,7 @@ def themes():
 
 
 
-@app.route('/bysource')
+@app.route(prefix+'/bysource')
 def bysource():
     scatter2 = Evolut_Nbr_Label_Source.create_scatter_labelSource()
 
