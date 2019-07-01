@@ -13,6 +13,8 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install waitress
 
 COPY . /app
+RUN chmod +x /app/regenerate_dataframes.py
+RUN ln -s /usr/bin/python3.7 /usr/bin/python
 
 
 CMD [ "flask", "run", "--host", "0.0.0.0", "--port", "8080"]

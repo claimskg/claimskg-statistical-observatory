@@ -16,11 +16,9 @@ flask run
 ```
 By default in development mode it will run on [http://localhost:8080/](http://localhost:8080/dataframe_generation)
 
-At first run or in case of updates in the ClaimsKG graph, you must generate the dataframes csv files which are used as data source to feed the application with simple GET requests on the following URIs:
+At first run or in case of updates in the ClaimsKG graph, you must generate the dataframes csv files which are used as data source to feed the application. 
 
-For the main dataframe use [http://localhost:8080/dataframe_generation](http://localhost:8080/dataframe_generation).
-For the per label dataframe use [http://localhost:8080/dataframe_per_label_generation](http://localhost:8080/dataframe_per_label_generation).
-For the theme part use [http://localhost:8080/generation_csv_themes](http://localhost:8080/generation_csv_themes). Please note that this last query may take up to 2-3 hours.  
+You simply need to run the `regenerate_dataframes.py` script to generate the dataframes. This process can take up to 3-4 hours. 
 
 ## Requirements
 The version of Python is 3.6.
@@ -53,5 +51,7 @@ The route prefix is set at the beginning of app.py in the prefix variable. If yo
 
 The current version only deploys a *DEMO* server running directly with flask as opposed to using a WSGI application server, possible security risks. 
 
-After running the container, please sent the appropriate GET requests as outlined in the "How to run" section above. 
+After running the container, please regenerate the dataframes, you may do so directly in the docker container using docker exec: 
+
+`docker exec container_id /usr/bin/python /app/regenerate_dataframes.py`
 
