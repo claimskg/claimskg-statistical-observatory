@@ -1,5 +1,6 @@
 import csv
 # from modules import liste_themes2
+import math
 from pathlib import Path
 
 import pandas as pd
@@ -25,13 +26,17 @@ def destack_themes_from_exploded():
     def searchFunction(row, dic):
         # print("loop")
         theme_found = []
+        i = 0
         for k, v in dic.items():
-
-            if k in row['keywords']:
+            i += 1
+            keywords = row['keywords']
+            if isinstance(keywords, float) and math.isnan(keywords):
+                keywords = ""
+            if k in keywords:
                 theme_found.append(k)
-            else:
+            elif keywords:
                 for mot in v:
-                    if mot in row['keywords']:
+                    if mot in keywords:
                         theme_found.append(k)
 
         if len(theme_found) > 0:
