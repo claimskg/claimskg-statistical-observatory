@@ -31,7 +31,7 @@ def create_barchart_soureVeracite():
 
     labels = ['TRUE', 'FALSE', 'OTHER', 'MIXTURE']
 
-    colors = ['blue', 'lightskyblue','red','yellow','green','black']
+    colors = ['blue', 'lightskyblue','red','yellow','green','black', 'orange', 'pink', 'grey', 'teal', 'tomato', 'gold', 'khaki', 'darkkhaki', 'plum', 'olive']
 
 
     data=[]
