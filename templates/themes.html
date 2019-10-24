@@ -33,14 +33,13 @@
         </div>
 
         <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">By themes</a></li>
-                <li><a href="right-sidebar.html">By entities</a></li>
-                <li><a href="bysource">By sources</a></li>
-            </ul>
-        </nav>
+                                               <nav id="nav">
+                                                        <ul>
+                                                                <li><a href="{{url_for('index')}}">Home</a></li>
+                                                                <li><a href="{{ url_for('themes') }}">By themes</a></li>
+                                                                <li><a href="{{ url_for('bysource') }}">By sources</a></li>
+                                                        </ul>
+                                                </nav>
 
     </div>
 
