@@ -22,11 +22,11 @@ prefix = "/claimskg/observatory"
 bp = Blueprint('claimskg/observatory', __name__,
                template_folder='templates')
 
-app = Flask("claimskg-statistical-observatory", static_url_path="/claimskg/observatory/")
+app = Flask("claimskg-statistical-observatory", static_url_path="/claimskg/observatory")
 app.register_blueprint(bp, url_prefix="/claimskg/observatory")
 
 
-@app.route(prefix + '/')
+@app.route(prefix)
 def base():
     return acceuil()
 
