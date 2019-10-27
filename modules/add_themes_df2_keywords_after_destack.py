@@ -11,7 +11,6 @@ pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_columns', None)
 
 # dico_themes
-dico_themes = add_themes_df2_keywords.get_rid_doubles()
 
 
 def destack_themes_from_exploded():
@@ -46,7 +45,7 @@ def destack_themes_from_exploded():
         else:
             # print("NF")
             return "NaN"
-
+    dico_themes = add_themes_df2_keywords.get_rid_doubles()
     df_destack['themes'] = df_destack.apply(lambda row: searchFunction(row, dico_themes), axis=1)
     print(df_destack['themes'])
     df_destack.to_csv(base_path / 'df_destack_themes_v1.csv', quoting=csv.QUOTE_MINIMAL, na_rep='NaN', index=False)
