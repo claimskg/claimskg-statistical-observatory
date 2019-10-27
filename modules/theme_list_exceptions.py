@@ -96,7 +96,7 @@ def get_newdata_dico_themes():
     # print(dico_themes['statistics'])
     dico_themes['economy'].extend(economy_processed)
     dico_themes['economy'].remove('aid')
-    dico_themes['economy'].remove('aid')
+    # dico_themes['economy'].remove('aid')
     # print(dico_themes['economy'])
     dico_themes['environment'].extend(environment1_processed)
     dico_themes['environment'].remove('sea')
@@ -111,7 +111,7 @@ def get_newdata_dico_themes():
     # dico_themes['environment'].append(environment2_processed)
     dico_themes['laws'].extend(law_processed)
     dico_themes['laws'].remove('law')
-    dico_themes['laws'].remove('law')
+    # dico_themes['laws'].remove('law')
     # print(dico_themes['laws'])
     # print(dico_themes)
     return dico_themes
