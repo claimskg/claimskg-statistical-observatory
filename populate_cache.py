@@ -1,18 +1,57 @@
-from modules.charts import create_truthrating_piechart, create_per_source_piechart, \
-    create_source_by_truth_value_barchart, create_global_average_barchart, create_metadata_coverage_barchart, \
-    scatterplot_authors_social_media_label, create_barchart_nb_means_source
+from redis import StrictRedis
+
+from modules.charts import create_truthrating_piechart, create_per_source_piechart, create_global_average_barchart, \
+    create_metadata_coverage_barchart, scatterplot_authors_social_media_label, create_barchart_nb_means_source, \
+    create_source_by_truth_value_barchart
 from modules.charts.bysource import create_scatter_label_source, create_scatter_label_source_mois
-from modules.charts.bytheme import get_all_steam_graph_data
+from modules.charts.bytheme import get_all_steam_graph_data, create_scatter_themes_dates_newdata, \
+    create_scatter_themes_dates_newdata_monthly
 from modules.statistics.summary import list_numbers_resume
 
+redis = StrictRedis()
+
 pie1 = create_truthrating_piechart()
+redis.set("home_pie1_truthrating", pie1)
+
 pie2 = create_per_source_piechart()
+redis.set("home_pie2_per_source", pie2)
+
 bar1 = create_global_average_barchart()
+redis.set("home_bar1_global_average", bar1)
+
 bar2 = create_metadata_coverage_barchart()
+redis.set("home_bar2_metadata_coverage", bar2)
+
+redis.delete("home_list_summary")
 list_resume = list_numbers_resume()[0]
+redis.rpush("home_list_summary", *list_resume)
+
 scatter1 = scatterplot_authors_social_media_label()
+redis.set("home_scatter1_authors_social_media", scatter1)
+
 bar4 = create_barchart_nb_means_source()
+redis.set("home_bar4_nb_means_source", bar4)
+
 barSV = create_source_by_truth_value_barchart()
+redis.set("home_barSV_source_by_truth_value", barSV)
+
+# By Theme caching
+
+scatter1 = create_scatter_themes_dates_newdata()
+redis.set("bytheme_scatter1_theme_dates", scatter1)
+
+scatter2 = create_scatter_themes_dates_newdata_monthly()
+redis.set("bytheme_scatter2_theme_dates_monthly", scatter1)
+
+
+def cache_stream_graph_data(key, data):
+    for item in data:
+        subkey = item[0]
+        datapoints = item[1]
+        final_key = key + "@" + subkey
+        redis.delete(final_key)
+        redis.rpush(final_key, *datapoints)
+
 
 stream_graph_datas_labels = [
     "1996",
@@ -60,8 +99,14 @@ stream_graph_datas_labelsm = ["March 2005", "June 2005", "September 2005", "Dece
                               "March 2019"]
 stream_graph_datasm = get_all_steam_graph_data(stream_graph_datas_labelsm)
 
-scatter2 = create_scatter_label_source()
+cache_stream_graph_data("streamgraph_datas", stream_graph_datas)
+cache_stream_graph_data("streamgraph_datasm", stream_graph_datasm)
 
-scatter2_mois = create_scatter_label_source_mois()
+# By Source
+bysource_scatter1 = create_scatter_label_source()
+redis.set("bysource_scatter_1_label_source_1", bysource_scatter1[1])
+redis.set("bysource_scatter_1_label_source_2", bysource_scatter1[0])
 
-print("End test.")
+by_source_scatter2_mois = create_scatter_label_source_mois()
+redis.set("bysource_scatter_2_label_source_0", by_source_scatter2_mois[0])
+redis.set("bysource_scatter_2_label_source_1", by_source_scatter2_mois[1])

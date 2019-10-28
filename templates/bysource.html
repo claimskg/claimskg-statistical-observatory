@@ -5,149 +5,142 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Themes - ClaimsKG Statistical Observatory</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet" type="text/css" />
-        <noscript><link href="{{ url_for('static', filename='assets/css/noscript.css') }}" rel="stylesheet" /></noscript>
-        {#    external libraries calls#}
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
+<head>
+    <title>Themes - ClaimsKG Statistical Observatory</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet" type="text/css"/>
+    <noscript>
+        <link href="{{ url_for('static', filename='assets/css/noscript.css') }}" rel="stylesheet"/>
+    </noscript>
+    {#    external libraries calls#}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+<body class="no-sidebar is-preload">
+<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
+    <!-- Header -->
+    <div id="header">
 
-					<!-- Inner -->
-						<div class="inner">
-							<header>
-								<h1><a href="index.html" id="logo">ClaimsKG Statistical Observatory</a></h1>
-							</header>
-						</div>
+        <!-- Inner -->
+        <div class="inner">
+            <header>
+                <h1><a href="index.html" id="logo">ClaimsKG Statistical Observatory</a></h1>
+            </header>
+        </div>
 
-					<!-- Nav -->
-                                               <nav id="nav">
-                                                        <ul>
-                                                                <li><a href="{{url_for('index')}}">Home</a></li>
-                                                                <li><a href="{{ url_for('themes') }}">By themes</a></li>
-                                                                <li><a href="{{ url_for('bysource') }}">By sources</a></li>
-                                                        </ul>
-                                                </nav>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('themes') }}">By themes</a></li>
+                <li><a href="{{ url_for('bysource') }}">By sources</a></li>
+            </ul>
+        </nav>
 
-				</div>
+    </div>
 
-			<!-- Main -->
-				<div class="wrapper style1">
+    <!-- Main -->
+    <div class="wrapper style1">
 
-					<div class="container">
-						<article id="main" class="special">
-{#                            <div class="chart" id="scatter1">#}
-                                <header>
-                                    <h2><a href="#">By sources</a></h2>
-                                    <p>
-                                        Explore claims around sources
-                                    </p>
-                                </header>
-                            <section>
-    {#                                <div class="chart" id="scatter2">#}
-                                    <header>
-                                        <h3>Number of claims per label of Snopes by year</h3>
-                                    </header>
-                                        <div class="chart" id="scatter2">
-                                            <script>
-                                                var graphs = {{plot2 | safe}};
-                                                Plotly.plot('scatter2',graphs,{});
-                                            </script>
-                                        </div>
-							</section>
-                            <section>
-    {#                                <div class="chart" id="scatter2">#}
-                                    <header>
-                                        <h3>Number of claims per label of Snopes by month</h3>
-                                    </header>
-                                        <div class="chart" id="scatter2MOIS">
-                                            <script>
-                                                var graphs = {{plot2MOIS | safe}};
-                                                Plotly.plot('scatter2MOIS',graphs,{});
-                                            </script>
-                                        </div>
-							</section>
-							<section>
-    {#                                <div class="chart" id="scatter3">#}
-                                    <header><h3>Number of claims per label of Politifact by year</h3></header>
-                                        <div class="chart" id="scatter3">
-                                            <script>
-                                                var graphs = {{plot3 | safe}};
-                                                Plotly.plot('scatter3',graphs,{});
-                                            </script>
-                                        </div>
-							</section>
-                            <section>
-    {#                                <div class="chart" id="scatter3">#}
-                                    <header><h3>Number of claims per label of Politifact by month</h3></header>
-                                        <div class="chart" id="scatter3MOIS">
-                                            <script>
-                                                var graphs = {{plot3MOIS| safe}};
-                                                Plotly.plot('scatter3MOIS',graphs,{});
-                                            </script>
-                                        </div>
-							</section>
-						</article>
-						<hr />
-						<div class="row">
-						</div>
-					</div>
+        <div class="container">
+            <article id="main" class="special">
+                {#                            <div class="chart" id="scatter1">#}
+                <header>
+                    <h2><a href="#">By sources</a></h2>
+                    <p>
+                        Explore claims around sources
+                    </p>
+                </header>
+                <section>
+                    {#                                <div class="chart" id="scatter2">#}
+                    <header>
+                        <h3>Number of claims per label of facscan by year</h3>
+                    </header>
+                    <div class="chart" id="scatter2">
+                        <script>
+                            var graphs = {{plot2 | safe}};
+                            Plotly.plot('scatter2', graphs, {});
+                        </script>
+                    </div>
+                </section>
+                <section>
+                    {#                                <div class="chart" id="scatter3">#}
+                    <header><h3>Number of claims per label of Politifact by year</h3></header>
+                    <div class="chart" id="scatter3">
+                        <script>
+                            var graphs = {{plot3 | safe}};
+                            Plotly.plot('scatter3', graphs, {});
+                        </script>
+                    </div>
+                </section>
+                <section>
+                    {#                                <div class="chart" id="scatter3">#}
+                    <header><h3>Number of claims per label of Politifact by month</h3></header>
+                    <div class="chart" id="scatter3MOIS">
+                        <script>
+                            var graphs = {{plot3MOIS| safe}};
+                            Plotly.plot('scatter3MOIS', graphs, {});
+                        </script>
+                    </div>
+                </section>
+            </article>
+            <hr/>
+            <div class="row">
+            </div>
+        </div>
 
-				</div>
+    </div>
 
-			<!-- Footer -->
-				<div id="footer">
-					<div class="container">
-						<div class="row">
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
 
-						</div>
-						<hr />
-						<div class="row">
-							<div class="col-12">
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-12">
 
-								<!-- Contact -->
-									 <section class="contact">
-                                        <header>
-                                            <h3>For more information about this work and ClaimsKG</h3>
-                                        </header>
-                                        <p>Feel free to contact us and have a look at the <a href="https://data.gesis.org/claimskg/site">ClaimsKG page.</a></p>
-                                    </section>
+                    <!-- Contact -->
+                    <section class="contact">
+                        <header>
+                            <h3>For more information about this work and ClaimsKG</h3>
+                        </header>
+                        <p>Feel free to contact us and have a look at the <a
+                                href="https://data.gesis.org/claimskg/site">ClaimsKG page.</a></p>
+                    </section>
 
-								<!-- Copyright -->
-									<div class="copyright">
-										<ul class="menu">
-											<li>ClaimsKG Statistical Observatory is published under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 license</a></li>
-                                            <li>Realised by Darlène Bechtel and Hicham Tabet.</li>
-                                            <li>Design basis: <a href="http://html5up.net">HTML5 UP</a></li>
-										</ul>
-									</div>
+                    <!-- Copyright -->
+                    <div class="copyright">
+                        <ul class="menu">
+                            <li>ClaimsKG Statistical Observatory is published under a <a
+                                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons
+                                Attribution-NonCommercial-ShareAlike 4.0 license</a></li>
+                            <li>Realised by Darlène Bechtel and Hicham Tabet.</li>
+                            <li>Design basis: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
 
-							</div>
+                </div>
 
-						</div>
-					</div>
-				</div>
+            </div>
+        </div>
+    </div>
 
-		</div>
+</div>
 
-		<!-- Scripts -->
+<!-- Scripts -->
 {#    intternal libraries calls#}
-            <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
-			<script type="text/javascript" src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 
-	</body>
+</body>
 </html>
